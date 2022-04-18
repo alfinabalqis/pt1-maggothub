@@ -44,6 +44,12 @@ navLink.forEach(n => n.addEventListener('click', function(){
     mobile_menu.classList.remove('is-active');
 }))
 
+// /*Add active class*/
+// const beranda = document.getElementById('beranda')
+// function beranda(){
+//     beranda.add('active')
+// }
+
 /*===== SCROLL SECTIONS ACTIVE LINK =====*/
 const sections = document.querySelectorAll('section[id]')
 
