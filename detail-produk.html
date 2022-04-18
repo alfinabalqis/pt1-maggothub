@@ -18,8 +18,8 @@
             </div>
 			<div class="nav__menu" id="nav-menu">
 				<ul class="nav__list">
-					<a href="index.html#home" class="nav__link"><li class="nav__item"><strong>Beranda</strong></li></a>
-					<a href="produk.html" class="nav__link active"><li class="nav__item"><strong>Produk</strong></li></a>
+					<a href="#home" class="nav__link active"><li class="nav__item"><strong>Beranda</strong></li></a>
+					<a href="produk.html" class="nav__link"><li class="nav__item"><strong>Produk</strong></li></a>
 					<a href="index.html#tentang-bsf" class="nav__link"><li class="nav__item"><strong>Tentang BSF</strong></li></a>
 				</ul>
 			</div>
@@ -33,12 +33,22 @@
                     </a>
 				</ul>
 			</div>
-
-            <div class="nav__toggle" id="nav-toggle">
-                <i class='bx bx-menu'></i>
-            </div>
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
 	</header>
+
+    <!--Mobile Nav-->
+    <div class="mobile-nav">
+        <a href="#home" class="nav__link"><strong>Beranda</strong></a>
+		<a href="produk.html" class="nav__link"><strong>Produk</strong></a>
+        <a href="index.html#tentang-bsf" class="nav__link"><strong>Tentang BSF</strong></a>
+        <a id="open-masuk" class="nav__link" style="cursor: pointer;"><strong>Masuk</strong></a>
+        <a id="open-daftar" class="nav__link" style="cursor: pointer;"><strong>Daftar</strong></a>   
+    </div>
 
 
     <!--Produk-->
@@ -159,6 +169,10 @@
                 <p class="copyright">&#x24B8;<b>Copyright</b> 2022 Altruis Team</p>
             </div>
         </footer>
-    
+        <!--===== SCROLL REVEAL =====-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--===== MAIN JS =====-->
+        <script src="assets/script/main.js"></script>
 </body>
 </html>

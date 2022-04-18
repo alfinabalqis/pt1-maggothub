@@ -1,24 +1,3 @@
-// $(document).ready(function(){
-//     $('.modal').modal();
-// });
-
-// function myFunction(){
-//     var x = document.getElementById("myInput");
-//     var y = document.getElementById("hide");
-//     var z = document.getElementById("hide2");
-
-//     if(x.type === 'password'){
-//         x.type = "text";
-//         y.style.display = "block";
-//         z.style.display = "none";
-//     }
-//     else {
-//         x.type = "text";
-//         y.style.display = "none";
-//         z.style.display = "block";
-//     }
-// }
-
 /*===== MODAL =====*/ 
 
 const open_masuk = document.getElementById('open-masuk')
@@ -45,28 +24,20 @@ close_daftar.addEventListener('click', () => {
     modal_daftar.classList.remove('show-modal')
 });
 
-/*===== MENU SHOW =====*/ 
-const showMenu = (toggleId, navId) =>{
-    const toggle = document.getElementById(toggleId),
-    nav = document.getElementById(navId)
+/*===== SHOW MOBILE MENU =====*/ 
+const hamburger = document.querySelector('.hamburger');
+const mobile_menu = document.querySelector('.mobile-nav');
+hamburger.addEventListener('click', function(){
+    hamburger.classList.toggle('is-active');
+    mobile_menu.classList.toggle('is-active');
+})
 
-    if(toggle && nav){
-        toggle.addEventListener('click', ()=>{
-            nav.classList.toggle('show')
-        })
-    }
-}
-showMenu('nav-toggle','nav-menu')
-
-
-/*===== REMOVE MENU MOBILE =====*/
-const navLink = document.querySelectorAll('.nav__item')
-
-function linkAction(){
-    const navMenu = document.getElementById('nav-menu')
-    navMenu.classList.remove('show')
-}
-navLink.forEach(n => n.addEventListener('click', linkAction))
+/*===== REMOVE MOBIL MENU =====*/
+const navLink = document.querySelectorAll('.nav__link')
+navLink.forEach(n => n.addEventListener('click', function(){
+    hamburger.classList.remove('is-active');
+    mobile_menu.classList.remove('is-active');
+}))
 
 /*===== SCROLL SECTIONS ACTIVE LINK =====*/
 const sections = document.querySelectorAll('section[id]')
