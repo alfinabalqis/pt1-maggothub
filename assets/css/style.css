@@ -299,7 +299,7 @@ button:hover {
 /* ===== Produk =====*/
 
 .fix-img img {
-  width: auto;
+  width: 100px;
 }
 .container {
   padding: 50px;
@@ -365,6 +365,7 @@ hr{
   margin: 10px 0px;
 }
 
+/*Footer*/
 .contact h2 {
   padding-top: 50px;
   margin: auto;
@@ -375,7 +376,13 @@ hr{
 }
 
 footer .container{
+  padding-left: 0;
   padding-bottom: 20px;
+}
+
+.footer-desc{
+  max-width: 25%;
+  text-align: justify;
 }
 
 .footer-list{
@@ -776,6 +783,13 @@ input#quantity{
   }
   .section .fotosamping {
     max-width: 0%;
+  }
+  .footer-desc{
+    display: none;
+  }
+  
+  .footer-list{
+    width: 100%;
   }
 }
 
