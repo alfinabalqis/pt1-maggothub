@@ -141,7 +141,7 @@
                 </div>
                 <div class="d-inline-flex row-desc">
                     <div class="d-inline-flex">
-                        <img src="assets/images/ic-rating.svg" alt="">
+                        <img src="assets/images/ic-rating.svg">
                         <p> 4.5</p>
                     </div>
                     <div class="d-inline-flex">
@@ -172,7 +172,7 @@
                 </div>
                 <div class="button">
                     <a href="https://wa.me/088980077538?text=Halo,%20apakah%20produk%20ini%20masih%20ada?" target="_blank"><button>Chat Penjual</button></a> <br>
-                   <a href=""><button class="beli">Beli Sekarang</button></a>
+                    <button class="beli" onclick="show()">Beli Sekarang</button>
                 </div>
             </div>
         </div>
@@ -189,25 +189,43 @@
     </div>
 
     <!--Form Pembelian-->
-    <div class="container form-pembelian">
+    <div class="container form-pembelian" id="form-pembelian">
         <h1>Pembelian Produk</h1>
-        <div>
+        <div class="form-produk">
             <h2>Form Pembelian Produk</h2>
             <form>
                 <div class="form-group">
-                  <label>Email</label> <br>
-                  <input type="email" class="form-control" placeholder="Masukkan Email">
+                    <input type="name" class="form-control" placeholder="Masukkan Email">
                 </div>
-  
                 <div class="form-group">
-                  <label>Password</label> <br>
-                  <input type="password" class="form-control" placeholder="Masukan Password" id="myInput">
-                  <span class="eye login" onclick="myFunction()">
-                    <i id="hide" class="fa fa-eye" aria-hidden="true"></i>
-                    <i  id="hide2" class="fa fa-eye-slash" aria-hidden="true"></i>
-                  </span>
-                </div>                 
-            </form>   
+                    <input type="name" class="form-control" placeholder="Masukkan Email">
+                </div>
+                <div class="form-group">
+                    <input type="name" class="form-control" placeholder="Masukkan Email">
+                </div>
+                <div class="form-group">
+                    <input type="name" class="form-control" placeholder="Masukkan Email">
+                </div>
+                <div class="d-inline-flex half">
+                    <div class="form-group">
+                        <input type="name" class="form-control" placeholder="Masukkan Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="name" class="form-control" placeholder="Masukkan Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                   <textarea name="" id="" cols="30" rows="10"></textarea>
+                </div>
+            </form>  
+            <div class="d-inline-flex" style="justify-content: space-between">
+                <h1>Total Harga : </h1>
+                <h1>Rp 50.000</h1>
+            </div> 
+            <div>
+                <a href="https://wa.me/088980077538?text=Halo,%20apakah%20produk%20ini%20masih%20ada?" target="_blank"><button>Beli Sekarang</button></a> <br>
+                <button id="batal" onclick="hide()">Batalkan Pesanan</button>
+            </div>
         </div>
     </div>
 	

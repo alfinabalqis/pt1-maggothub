@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap');
 
 /*===== VARIABLES CSS =====*/
 :root{
@@ -58,6 +58,7 @@ body{
   color: var(--text-color);
   line-height: 1.6;
 }
+
 h1,h2,p{
   margin: 0;
 }
@@ -176,10 +177,10 @@ header {
 }
 
 .nav .nav__list .nav__item {
-  font-style: normal;
+  /* font-style: normal;
   line-height: 19px;
-  font-weight: 500;
-  font-size: 1.2em;
+  font-weight: 500; */
+  font-size: 14px;
   display: inline-block;
   margin: 0 10px;
 }
@@ -194,6 +195,7 @@ button {
   margin-top: 20px;
   color: white;
   padding: 15px 50px;
+  font-family: 'Poppins','sans-serif';
 }
 
 button.daftar{
@@ -528,7 +530,8 @@ h3{
 
 hr{
   border: 1px solid #DEE1E5;
-  margin: 10px 0px;
+  /* margin: 10px 0px; */
+  float: left;
 }
 
 /*Footer*/
@@ -592,27 +595,31 @@ li.list-name {
 .contacts-area li {
   padding: 5px 10px 5px 25px;
   vertical-align: middle;
+  display: flex;
 }
 
-footer .container hr {
+.contacts-area li a{
+  margin-left: 5px;
+}
+
+/* footer .container hr {
   height: 1px;
   width: 100%;
   border: none;
   background-color: #828282;
   margin-bottom: 1rem;
-}
+} */
 
 .footer-bottom {
-  display: flex;
-  justify-content: center;
+ text-align: center;
   align-items: center;
   font-size: 0.875rem;
 }
 
 .copyright {
   color: #46505C;
-  display: flex;
-  align-items: center;
+  /* display: flex;
+  align-items: center; */
 }
 
 .copyright span {
@@ -814,6 +821,8 @@ small, .sandi{
   color: #fff;
 }
 
+/*=====DETAIL PRODUK=====*/
+
 .akun{
   margin-left: 4em;
 }
@@ -832,15 +841,23 @@ small, .sandi{
   display: flex;
 }
 
+.d-inline-flex b{
+  margin-right: 5px;
+}
+
 .informasi-produk{
   margin-top: 5em;
   justify-content: space-around;
-  margin-bottom: 0px;
+  padding-bottom: 0px;
 }
 
 .deskripsi-produk {
-  margin: 0px 100px;
+  margin: 0px 60px;
   margin-top: -13em;
+}
+
+.deskripsi-produk hr{
+  width: 65%;
 }
 
 .deskripsi-produk p{
@@ -856,9 +873,9 @@ small, .sandi{
   font-weight: bold;
 }
 
-.deskripsi-produk hr{
+/* .deskripsi-produk hr{
   width: 70%;
-}
+} */
 
 .deskripsi-image{
   margin: 0px 30px;
@@ -897,13 +914,14 @@ small, .sandi{
 
 .subtotal button{
   padding: 15px 105px;
-  margin-top: 10px;
+  margin-top: 0px;
   margin-bottom: 20px;
   color: #1F2A36;
   background: #ffffff;
   border: 1px solid #8D959E;
   border-radius: 8px;
   font-weight: bold;
+  font-family: 'Poppins','sans-serif';
 }
 
 .jumlah-produk .button button{
@@ -915,7 +933,15 @@ input#quantity{
   width: 40%;
 }
 
-.button button.beli{
+.form-group label{
+  padding-bottom: 5px;
+}
+
+.form-group span{
+  margin-left: 5px;
+}
+
+button.beli{
   border: 1px solid #9E5726;
   color: #9E5726;
   background: #ffffff;
@@ -927,10 +953,52 @@ input#quantity{
   border: 1px solid #E5E9F2;
   margin: 0px 150px 50px;
   border-radius: 12px;
+  padding-top: 50px;
+  padding-bottom: 80px;
 }
 
 .form-pembelian h1{
-  margin-left: 0;
+  margin: 20px 0px 40px;
+}
+
+.form-produk{
+  box-shadow: 0px 16px 64px rgba(0, 7, 46, 0.04);
+  border-radius: 15px;
+  padding: 50px 100px 80px;
+}
+
+.form-produk h2{
+  color: #9E5726;
+  margin: 10px auto 30px;
+}
+
+.form-produk .form-group{
+  text-align: left;
+  width: 100%;
+}
+
+.form-produk .form-group input{
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.form-produk .form-group input::placeholder{
+  color: #999999;
+}
+
+.form-produk textarea{
+  width: 100%;
+  border: 1px solid #CBCED2;
+  border-radius: 8px;
+}
+
+.form-produk h1{
+  font-size: 20px;
+}
+
+.form-produk button{
+  width: 100%;
 }
 @media only screen and (max-width: 768px){
   body{

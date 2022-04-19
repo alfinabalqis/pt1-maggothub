@@ -89,3 +89,17 @@ sr.reveal('.tentang__text', {delay: 200})
 sr.reveal('#best-seller', {})
 sr.reveal('.fix-img', {interval: 200})
 sr.reveal('.home__subtitle', {})
+
+/*=====HIDE AND SHOW FORM=====*/
+function show(){  
+    var div = document.getElementById("form-pembelian");  
+    div.style.display = "block";
+    // if (div.style.display !== "none") 
+    // {  div.style.display = "none";  }  
+    // else {  div.style.display = "block";  }  
+}
+
+function hide(){
+    var hide = document.getElementById("form-pembelian");
+    hide.style.display = "none";
+}
