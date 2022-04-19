@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MaggotHub</title>
+    <title>Deskripsi Produk</title>
     <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
@@ -14,12 +15,12 @@
         <nav class="nav bd-grid">  
             <img src="./assets/images/maggothub.svg" class="logo-maggothub" alt="">
             <div class="nav__logo">
-                <h1><a href=""><span>Maggot</span>Hub</a></h1>
+                <h1><a href="index.html"><span>Maggot</span>Hub</a></h1>
             </div>
 			<div class="nav__menu" id="nav-menu">
 				<ul class="nav__list">
-					<a href="#home" class="nav__link active"><li class="nav__item"><strong>Beranda</strong></li></a>
-					<a href="produk.html" class="nav__link"><li class="nav__item"><strong>Produk</strong></li></a>
+					<a href="index.html#home" class="nav__link"><li class="nav__item"><strong>Beranda</strong></li></a>
+					<a href="produk.html" class="nav__link active"><li class="nav__item"><strong>Produk</strong></li></a>
 					<a href="index.html#tentang-bsf" class="nav__link"><li class="nav__item"><strong>Tentang BSF</strong></li></a>
 				</ul>
 			</div>
@@ -43,13 +44,83 @@
 
     <!--Mobile Nav-->
     <div class="mobile-nav">
-        <a href="#home" class="nav__link"><strong>Beranda</strong></a>
+        <a href="index.html#home" class="nav__link"><strong>Beranda</strong></a>
 		<a href="produk.html" class="nav__link"><strong>Produk</strong></a>
         <a href="index.html#tentang-bsf" class="nav__link"><strong>Tentang BSF</strong></a>
-        <a id="open-masuk" class="nav__link" style="cursor: pointer;"><strong>Masuk</strong></a>
-        <a id="open-daftar" class="nav__link" style="cursor: pointer;"><strong>Daftar</strong></a>   
+        <div class="nav__dropdown">
+            <a href="#">
+                <strong>Masuk</strong>
+                <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+            </a>
+
+            <div class="nav__dropdown-collapse">
+                <div class="nav__dropdown-content">
+                    <a href="login-penjual.html" class="nav__dropdown-item nav__link">Sebagai Penjual</a>
+                    <a href="login-pembeli.html" class="nav__dropdown-item nav__link">Sebagai Pembeli</a>
+                </div>
+            </div>
+        </div>
+        <div class="nav__dropdown">
+            <a href="#">
+                <strong>Daftar</strong>
+                <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+            </a>
+
+            <div class="nav__dropdown-collapse">
+                <div class="nav__dropdown-content">
+                    <a href="register-penjual.html" class="nav__dropdown-item nav__link">Sebagai Penjual</a>
+                    <a href="register-pembeli.html" class="nav__dropdown-item nav__link">Sebagai Pembeli</a>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <!--Section modal login dan register-->
+    <div class="modal-container" id="modal-masuk">
+        <div class="modal">
+            <h5 class="modal-close" id="close-masuk">&#10005;</h5>
+            <h1>Masuk</h1>
+            <h2>Pilih Daftar sebagai Penjual atau Pembeli</h2>
+            <div class="card">
+                <a href="login-penjual.html" class="kiri">
+                    <div>
+                        <img src="assets/images/ic-penjual.svg" alt="">
+                        <h1>Penjual</h1>
+                    </div>
+                </a>
+
+                <a href="login-pembeli.html">                        
+                    <div style="cursor: pointer;">
+                        <img src="assets/images/ic-pembeli.svg" alt="">
+                        <h1>Pembeli</h1>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-container" id="modal-daftar">
+        <div class="modal">
+            <h5 class="modal-close" id="close-daftar">&#10005;</h5>
+            <h1><strong>Daftar</strong></h1>
+            <h2>Pilih Daftar sebagai Penjual atau Pembeli</h2>
+            <div class="card">
+                <a href="register-penjual.html" class="kiri">                        
+                <div>
+                    <img src="assets/images/ic-penjual.svg" alt="">
+                    <h1>Penjual</h1>
+                </div>
+                </a>
+
+                <a href="register-pembeli.html">                        
+                <div style="cursor: pointer;">
+                    <img src="assets/images/ic-pembeli.svg" alt="">
+                    <h1>Pembeli</h1>
+                </div>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!--Produk-->
     <section class="container informasi-produk d-inline-flex">
@@ -140,35 +211,42 @@
         </div>
     </div>
 	
-	    <!--Footer-->
-        <hr>
-        <footer class="section-footer">
-            <div class="container">
-                <div class="row">
-                    <div class="footer-desc">
+	<!--Footer-->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-desc">
+                    <div class="logo-area">
                         <img src="assets/images/logo.png" alt="">
-                        <p><b>MaggotHub</b><br>berkeinginan menyebarluaskan perkembangan produk maggot BSF sekaligus memperluas pasar penjualan maggot.</p>
+                        <span class="logo-name"> MaggotHub</span>
                     </div>
-                    <div class="footer-list" style="display: flex;">
-                        <div>
-                            <h5>Kontak Kami</h5>
-                            <ul class="list-unstyled">
-                                <li><img src="assets/images/ic-telepon.svg" alt=""><a href="#">+621234567891</a></li>
-                                <li><img src="assets/images/ic-email.svg" alt=""><a href="#">maggotHub@gmail.com</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h5>Social Media</h5>
-                            <ul class="list-unstyled">
-                                <li><img src="assets/images/ic-instagram.svg" alt=""><a href="#">maggot_Hub</a></li>
-                                <li><img src="assets/images/ic-facebook.svg" alt=""><a href="#">maggot_Hub</a></li>
-                            </ul>
-                        </div>
+                    <div class="desc-area">
+                        <p>Berkeinginan untuk menyebarluaskan produk - produk maggot BSF sekaligus memperluas pasar penjualan maggot BSF.</p>
                     </div>
                 </div>
-                <p class="copyright">&#x24B8;<b>Copyright</b> 2022 Altruis Team</p>
+                <div class="footer-list">
+                    <ul class="contacts-area">
+                        <li class="list-name">Kontak Kami</li>    
+                        <li><img src="assets/images/ic-telepon.svg" alt=""><a href="#">+621234567891</a></li>
+                        <li><img src="assets/images/ic-email.svg" alt=""><a href="#">maggotHub@gmail.com</a></li>
+                    </ul>
+                    
+                    <ul class="contacts-area">
+                        <li class="list-name">Social Media</li>    
+                        <li><img src="assets/images/ic-instagram.svg" alt=""><a href="#">maggot_Hub</a></li>
+                        <li><img src="assets/images/ic-facebook.svg" alt=""><a href="#">maggot_Hub</a></li>
+                    </ul>
+                </div>
             </div>
-        </footer>
+            <hr>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <i class='bx bxs-copyright'></i>
+                    <span>2022 Altruis Team</span>
+                </div>
+            </div>
+        </div>
+    </footer>
         <!--===== SCROLL REVEAL =====-->
         <script src="https://unpkg.com/scrollreveal"></script>
 

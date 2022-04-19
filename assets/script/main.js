@@ -1,5 +1,4 @@
 /*===== MODAL =====*/ 
-
 const open_masuk = document.getElementById('open-masuk')
 const close_masuk = document.getElementById('close-masuk')
 const modal_masuk = document.getElementById('modal-masuk')
@@ -27,12 +26,18 @@ close_daftar.addEventListener('click', () => {
 /*===== SHOW MOBILE MENU =====*/ 
 const hamburger = document.querySelector('.hamburger');
 const mobile_menu = document.querySelector('.mobile-nav');
-hamburger.addEventListener('click', function(){
+hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('is-active');
     mobile_menu.classList.toggle('is-active');
 })
 
-/*===== REMOVE MOBIL MENU =====*/
+/*===== SHOW DROPDOWN MENU =====*/ 
+const nav_dropdown = document.querySelectorAll('.nav__dropdown');
+nav_dropdown.forEach(n => n.addEventListener('click', function(){
+    this.classList.toggle('is-active');
+}))
+
+/*===== REMOVE MOBILE MENU =====*/
 const navLink = document.querySelectorAll('.nav__link')
 navLink.forEach(n => n.addEventListener('click', function(){
     hamburger.classList.remove('is-active');
