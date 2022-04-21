@@ -1,4 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap');
+
+*{
+  font-family: 'Nunito', sans-serif;
+  margin:0; padding:0;
+  box-sizing: border-box;
+   outline: none; border:none;
+   text-decoration: none;
+   transition: all .2s linear;
+   text-transform: capitalize;
+   box-sizing: border-box;
+}
 
 /*===== VARIABLES CSS =====*/
 :root{
@@ -18,7 +29,7 @@
 
 /*===== Fuente y tipografia =====*/
 :root{
-  --body-font: "Poppins", sans-serif;
+  --body-font: 'Nunito', sans-serif;;
   --big-font-size: 6.25rem;
   --h2-font-size: 1.25rem;
   --normal-font-size: .938rem;
@@ -50,6 +61,7 @@
 *,::before,::after{
   box-sizing: border-box;
 }
+
 body{
   margin: var(--header-height) 0 0 0;
   font-family: var(--body-font);
@@ -196,7 +208,7 @@ button {
   margin-top: 20px;
   color: white;
   padding: 15px 50px;
-  font-family: 'Poppins','sans-serif';
+  font-family: 'Nunito', sans-serif;
 }
 
 button.daftar{
@@ -627,6 +639,7 @@ li.list-name {
   margin-left: 8px;
   font-weight: 400;
   letter-spacing: 0.135rem;
+  text-align: center;
 }
 
 /*Modal*/
@@ -922,7 +935,7 @@ small, .sandi{
   border: 1px solid #8D959E;
   border-radius: 8px;
   font-weight: bold;
-  font-family: 'Poppins','sans-serif';
+  font-family: 'Nunito', sans-serif;
 }
 
 .jumlah-produk .button button{
@@ -1015,6 +1028,7 @@ button.beli{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   gap:2rem;
+  margin-top: 60px;
 }
 
 .products-container .grid-container .product{
@@ -1074,7 +1088,7 @@ button.beli{
 }
 
 p{
-  font-size: 1.6rem;
+  /* font-size: 1.6rem; */
   color:#8D959E;
 }
 
@@ -1098,10 +1112,45 @@ p{
   border:.1rem solid #9E5726;
   background: #9E5726;
   color:#fff;
+  border-radius: 10px;
+  font-size: 1.5rem;
 }
 
 .btn-lihat-produk a:hover{
   background: #75350a;
+}
+
+/*Swiper Slide*/
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 @media (max-width:991px){
@@ -1120,10 +1169,28 @@ p{
   html{
      font-size: 50%;
   }
+  .nav .nav__logo h1{
+    font-size: 20px;
+  }
+  .nav .nav__logo{
+    padding: 5px 0px;
+  }
+  .wrapper .search-input{
+    margin-top: 10px;
+  }
   .product{
      text-align: center;
   }
-
+  .nama-produk{
+    left: 0px;
+    max-width: none;
+  }
+  footer .container{
+    padding: 30px;
+  }
+  .footer-bottom{
+    text-align: left;
+  }
 }
 @media only screen and (max-width: 768px){
   body{
@@ -1195,7 +1262,7 @@ p{
     justify-content: left;
   }
   .footer-desc {
-    margin-left: 15%;
+    margin-left: 7%;
   }
   .footer-list {
     flex-wrap: wrap;
