@@ -138,7 +138,7 @@
         </div>
 
         <!--List Products-->
-        <div class="container produk">
+        <!-- <div class="container produk">
             <div class="row">
                 <div class="col-3 fix-img">
                     <div class="produk">
@@ -256,6 +256,138 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div> -->
+        <div class="products-container">
+            <div class="grid-container">
+                <div class="product">
+                    <img src="images/produk/biotech.jpg" alt="" class="gambar">
+                    <img src="images/habis.svg" alt="Is Available" class="is-available">
+                    <h3 class="nama-produk">Maggot BSF</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <i class="far fa-star"></i>
+                        <span>( 3.5 )</span>
+                    </div>
+                    <p><strong>Harga</strong></p>
+                    <div class="price">Rp25.000</div>
+                    <div class="btn-lihat-produk">
+                        <a href="#" class="cart">Lihat Produk</a>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="images/produk/biomagg.png" alt="" class="gambar">
+                    <img src="images/tersedia.svg" alt="Is Available" class="is-available">
+                    <h3 class="nama-produk">Maggot BSF</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>( 4.5 )</span>
+                    </div>
+                    <p><strong>Harga</strong></p>
+                    <div class="price">Rp25.000</div>
+                    <div class="btn-lihat-produk">
+                        <a href="#" class="cart">Lihat Produk</a>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="images/produk/maggotbarca.jpg" alt="" class="gambar">
+                    <img src="images/habis.svg" alt="Is Available" class="is-available">
+                    <h3 class="nama-produk">Maggot BSF</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>( 4.5 )</span>
+                    </div>
+                    <p><strong>Harga</strong></p>
+                    <div class="price">Rp25.000</div>
+                    <div class="btn-lihat-produk">
+                        <a href="#" class="cart">Lihat Produk</a>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="images/produk/maggotsuperijo.jpg" alt="" class="gambar">
+                    <img src="images/habis.svg" alt="Is Available" class="is-available">
+                    <h3 class="nama-produk">Maggot BSF</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>( 4.5 )</span>
+                    </div>
+                    <p><strong>Harga</strong></p>
+                    <div class="price">Rp25.000</div>
+                    <div class="btn-lihat-produk">
+                        <a href="#" class="cart">Lihat Produk</a>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="images/produk/super-maggot.png" alt="" class="gambar">
+                    <img src="images/tersedia.svg" alt="Is Available" class="is-available">
+                    <h3 class="nama-produk">Maggot BSF</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>( 4.5 )</span>
+                    </div>
+                    <p><strong>Harga</strong></p>
+                    <div class="price">Rp25.000</div>
+                    <div class="btn-lihat-produk">
+                        <a href="#" class="cart">Lihat Produk</a>
+                    </div>
+                </div>
+                
+                <div class="product">
+                    <img src="images/produk/tepung.png" alt="" class="gambar">
+                    <img src="images/tersedia.svg" alt="Is Available" class="is-available">
+                    <h3 class="nama-produk">Maggot BSF</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>( 4.5 )</span>
+                    </div>
+                    <p><strong>Harga</strong></p>
+                    <div class="price">Rp25.000</div>
+                    <div class="btn-lihat-produk">
+                        <a href="#" class="cart">Lihat Produk</a>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="images/produk/biotech.jpg" alt="" class="gambar">
+                    <img src="images/habis.svg" alt="Is Available" class="is-available">
+                    <h3 class="nama-produk">Maggot BSF</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>( 4.5 )</span>
+                    </div>
+                    <p><strong>Harga</strong></p>
+                    <div class="price">Rp25.000</div>
+                    <div class="btn-lihat-produk">
+                        <a href="#" class="cart">Lihat Produk</a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </main>
