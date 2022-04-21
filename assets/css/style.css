@@ -119,7 +119,8 @@ li{
 }
 
 .active {
-  color: var(--normal-color);
+  color: #9E5726;
+  font-weight: bolder;
 }
 
 header {
