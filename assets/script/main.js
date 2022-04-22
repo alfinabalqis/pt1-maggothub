@@ -44,6 +44,12 @@ navLink.forEach(n => n.addEventListener('click', function(){
     mobile_menu.classList.remove('is-active');
 }))
 
+// /*Add active class*/
+// const beranda = document.getElementById('beranda')
+// function beranda(){
+//     beranda.add('active')
+// }
+
 /*===== SCROLL SECTIONS ACTIVE LINK =====*/
 const sections = document.querySelectorAll('section[id]')
 
@@ -103,3 +109,19 @@ function hide(){
     var hide = document.getElementById("form-pembelian");
     hide.style.display = "none";
 }
+
+var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    slidesPerGroup: 3,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+});

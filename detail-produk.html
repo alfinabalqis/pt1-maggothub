@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaggotHub</title>
+    <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <!--Navbar-->
+    <header>
+        <nav class="nav bd-grid">  
+            <img src="./assets/images/maggothub.svg" class="logo-maggothub" alt="">
+            <div class="nav__logo">
+                <h1><a href=""><span>Maggot</span>Hub</a></h1>
+            </div>
+			<div class="nav__menu" id="nav-menu">
+				<ul class="nav__list">
+					<a href="index.html" class="nav__link"><li class="nav__item">Beranda</li></a>
+					<a href="produk.html" class="nav__link active"><li class="nav__item"><strong>Produk</strong></li></a>
+					<a href="#tentang-bsf" class="nav__link"><li class="nav__item">Tentang BSF</li></a>
+				</ul>
+			</div>
+            <div class="nav__menu" id="nav-menu">
+				<ul class="nav__list">
+					<a class="nav__link active" id="open-masuk" style="cursor: pointer;">
+                        <li class="nav__item">Masuk</li>
+                    </a>
+					<a class="nav__link" id="open-daftar"> 
+                        <li class="nav__item"><button class="daftar">Daftar</button></li>
+                    </a>
+				</ul>
+			</div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+	</header>
+
+
+    <!--Produk-->
+    <section class="container informasi-produk d-inline-flex">
+        <div class="d-inline-flex">
+            <div>
+                <img src="assets/images/super-magot.png" alt="">
+                <div>
+                    <h3>Toko Maggot</h3>
+                    <div class="d-inline-flex">
+                        <img src="assets/images/ic-location.svg" alt="">
+                        <p>Sukabirus, Bandung</p>
+                    </div>
+                </div>
+            </div>
+            <div class="deskripsi-image">
+                <div>
+                    <h3>SUPER MAGGOT Kering</h3>
+                </div>
+                <div class="d-inline-flex row-desc">
+                    <div class="d-inline-flex">
+                        <img src="assets/images/ic-rating.svg" alt="">
+                        <p> 4.5</p>
+                    </div>
+                    <div class="d-inline-flex">
+                        <b>Terjual</b>
+                        <p> 35</p>
+                    </div>
+                    <div class="d-inline-flex">
+                        <b>Penilaian</b>
+                        <p> 20</p>
+                    </div>
+                </div>
+                <div>
+                    <h2><b>Rp 25.000</b></h2>
+                </div>
+            </div>
+        </div>
+        <div class="jumlah-produk">
+            <div>
+                <h2>Jumlah Produk</h2>
+                <div class="form-group">
+                    <label>Jumlah Barang</label> <br>
+                    <input type="number" id="quantity" name="quantity" min="1" max="5">
+                    <span>Rp. 25.000</span>
+                </div>
+                <div class="subtotal">
+                    <label>Subtotal</label> <br>
+                    <button>Rp. 50.000</button>
+                </div>
+                <div class="button">
+                    <a href="https://wa.me/088980077538?text=Halo,%20apakah%20produk%20ini%20masih%20ada?" target="_blank"><button>Chat Penjual</button></a> <br>
+                   <a href=""><button class="beli">Beli Sekarang</button></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Deskipsi-->
+    <div class="container deskripsi-produk">
+        <hr>
+        <h1>Deskripsi</h1>
+        <p>Merupakan satu-satunya produk dengan khasiat pelet dalam bentuk organik Udang & Maggot BSF pilihan kualitas terbaik. Di Formulasikan khusus hasil olah racikan organik dari sari-sari tumbuhan & hewani. ProVitamin, More High Protein - HI-GROWTH, Max Color Enhancer & zat-zat alami dihabitatnya yg mendukung Progress Warna, sisik (arwana), jenong (louhan) marking, STRIP/SPOT/DOT, Bulky pada ikan Koi dan khusus Bakat Bunga (Channa Maru). Progress ikan kesayangan anda semakin optimal. <br><br>
+ 
+        Merupakan satu-satunya produk dengan khasiat pelet dalam bentuk organik Udang & Maggot BSF pilihan kualitas terbaik. Di Formulasikan khusus hasil olah racikan organik dari sari-sari tumbuhan & hewani. ProVitamin, More High Protein - HI-GROWTH, Max Color Enhancer & zat-zat alami dihabitatnya yg mendukung Progress Warna, sisik (arwana), jenong (louhan) marking, STRIP/SPOT/DOT, Bulky pada ikan Koi dan khusus Bakat Bunga (Channa Maru). Progress ikan kesayangan anda semakin optimal.
+        </p>
+    </div>
+
+    <!--Form Pembelian-->
+    <div class="container form-pembelian">
+        <h1>Pembelian Produk</h1>
+        <div>
+            <h2>Form Pembelian Produk</h2>
+            <form>
+                <div class="form-group">
+                  <label>Email</label> <br>
+                  <input type="email" class="form-control" placeholder="Masukkan Email">
+                </div>
+  
+                <div class="form-group">
+                  <label>Password</label> <br>
+                  <input type="password" class="form-control" placeholder="Masukan Password" id="myInput">
+                  <span class="eye login" onclick="myFunction()">
+                    <i id="hide" class="fa fa-eye" aria-hidden="true"></i>
+                    <i  id="hide2" class="fa fa-eye-slash" aria-hidden="true"></i>
+                  </span>
+                </div>                 
+            </form>   
+        </div>
+    </div>
+	
+	<!--Footer-->
+    <hr>
+    <footer class="section-footer">
+        <div class="container">
+            <div class="row">
+                <div style="max-width: 25%">
+                    <img src="assets/images/logo.png" alt="">
+                    <p>MaggotHub berkeinginan meyebarluaskan perkembangan produk maggot sekaligus memperluas pasar penjualan maggot.</p>
+                </div>
+                <div class="footer-list" style="display: flex;">
+                    <div>
+                        <h5>Kontak Kami</h5>
+                        <ul class="list-unstyled">
+                            <li><img src="assets/images/ic-telepon.svg" alt=""><a href="#">+621234567891</a></li>
+                            <li><img src="assets/images/ic-email.svg" alt=""><a href="#">maggotHub@gmail.com</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5>Social Media</h5>
+                        <ul class="list-unstyled">
+                            <li><img src="assets/images/ic-instagram.svg" alt=""><a href="#">maggot_Hub</a></li>
+                            <li><img src="assets/images/ic-facebook.svg" alt=""><a href="#">maggot_Hub</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <p class="copyright">&#x24B8; Copyright 2022 Altruis Team</p>
+        </div>
+    </footer>
+    
+</body>
+</html>

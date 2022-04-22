@@ -126,7 +126,7 @@
     <section class="container informasi-produk d-inline-flex">
         <div class="d-inline-flex">
             <div>
-                <img src="assets/images/super-magot.png" alt="">
+                <img src="assets/images/produk/super-maggot.png" alt="">
                 <div>
                     <h3>Toko Maggot</h3>
                     <div class="d-inline-flex">
