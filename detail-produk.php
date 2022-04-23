@@ -7,7 +7,7 @@
     <title>Deskripsi Produk</title>
     <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css?v=<?= time(); ?>">
 </head>
 <body>
     <!--Navbar-->

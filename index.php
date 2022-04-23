@@ -7,11 +7,14 @@
     <title>MaggotHub</title>
     <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="./assets/css/style.css?v=<?= time(); ?>">
+    <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
     <header>
+        
         <nav class="nav bd-grid">  
             <img src="./assets/images/maggothub.svg" class="logo-maggothub" alt="">
             <div class="nav__logo">
@@ -104,129 +107,44 @@
     </section>
 
     <!--Produk Best Seller-->
-    <div class="container produk swiper mySwiper">
+    <?php 
+    include 'functions.php';
+    $bests = get_rows("list_produk WHERE is_best_seller = '1'");
+    ?>
+    <div class="swiper mySwiper best-container">
         <h1 id="best-seller">Best Seller</h1>
-        <div class="swiper-wrapper">
-            <div class="swiper-slide col-3 fix-img">
-                <div class="produk">
-                    <div class="img-produk">
-                        <div class="stok">
-                            <img src="assets/images/tersedia.png" alt="">
-                        </div>
-                        <img src="assets/images/produk/biomagg.png" alt="Foto Produk">
-                    </div>
-                    <h3>Biomagg Maggfeed </h3>
-                    <span><img src="assets/images/rating.png" alt="">4.5</span>
-                    <hr>
-                    <div class="harga">
-                        <h5>Harga</h5>
-                        <p>Rp25.000</p>
-                        <hr>
-                        <button>Lihat Produk</button>
-                    </div>
+        <div class="swiper-wrapper best-wrapper">
+            <?php foreach($bests as $best): ?>
+            <div class="swiper-slide best-product">
+                <img src="assets/images/produk/<?= $best["gambar"]; ?>" alt="" class="gambar">
+                <?php 
+                $status = "tersedia";
+                if($best["stok"] == 0) $status="habis";
+                ?>
+                <img src="assets/images/<?= $status; ?>.svg" alt="Is Available" class="is-available">
+                <h3 class="nama-produk"><?= $best["nama"]; ?></h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <i class="far fa-star"></i>
+                    <span>( 3.5 )</span>
+                </div>
+                <p>Harga</p>
+                <div class="price"><?= $best["harga"]; ?></div>
+                <div class="btn-lihat-produk">
+                    <a href="/detail-produk.php">Lihat Produk</a>
                 </div>
             </div>
-            <div class="swiper-slide col-3 fix-img">
-                <div class="produk">
-                    <div class="img-produk">
-                        <div class="stok">
-                            <img src="assets/images/habis.svg" alt="">
-                        </div>
-                        <img src="assets/images/produk/tepung.png" alt="Foto Produk">
-                    </div>
-                    <h3>Tepung Maggot BSF</h3>
-                    <span><img src="assets/images/rating.png" alt="">4.5</span>
-                    <hr>
-                    <div class="harga">
-                        <h5>Harga</h5>
-                        <p>Rp45.000</p>
-                        <hr>
-                        <button>Lihat Produk</button>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide col-3 fix-img">
-                <div class="produk">
-                    <div class="img-produk">
-                        <div class="stok">
-                            <img src="assets/images/tersedia.png" alt="">
-                        </div>
-                        <img src="assets/images/produk/super-maggot.png" alt="Foto Produk">
-                    </div>
-                    <h3>SUPER MAGGOT Kering</h3>
-                    <span><img src="assets/images/rating.png" alt="">4.5</span>
-                    <hr>
-                    <div class="harga">
-                        <h5>Harga</h5>
-                        <p>Rp25.000</p>
-                        <hr>
-                        <a href="detail-produk.php"><button>Lihat Produk</button></a>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide col-3 fix-img">
-                <div class="produk">
-                    <div class="img-produk">
-                        <div class="stok">
-                            <img src="assets/images/tersedia.png" alt="">
-                        </div>
-                        <img src="assets/images/produk/biomagg.png" alt="Foto Produk">
-                    </div>
-                    <h3>Biomagg Maggfeed </h3>
-                    <span><img src="assets/images/rating.png" alt="">4.5</span>
-                    <hr>
-                    <div class="harga">
-                        <h5>Harga</h5>
-                        <p>Rp25.000</p>
-                        <hr>
-                        <button>Lihat Produk</button>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide col-3 fix-img">
-                <div class="produk">
-                    <div class="img-produk">
-                        <div class="stok">
-                            <img src="assets/images/habis.svg" alt="">
-                        </div>
-                        <img src="assets/images/produk/tepung.png" alt="Foto Produk">
-                    </div>
-                    <h3>Tepung Maggot BSF</h3>
-                    <span><img src="assets/images/rating.png" alt="">4.5</span>
-                    <hr>
-                    <div class="harga">
-                        <h5>Harga</h5>
-                        <p>Rp45.000</p>
-                        <hr>
-                        <button>Lihat Produk</button>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide col-3 fix-img">
-                <div class="produk">
-                    <div class="img-produk">
-                        <div class="stok">
-                            <img src="assets/images/tersedia.png" alt="">
-                        </div>
-                        <img src="assets/images/produk/super-maggot.png" alt="Foto Produk">
-                    </div>
-                    <h3>SUPER MAGGOT Kering</h3>
-                    <span><img src="assets/images/rating.png" alt="">4.5</span>
-                    <hr>
-                    <div class="harga">
-                        <h5>Harga</h5>
-                        <p>Rp25.000</p>
-                        <hr>
-                        <a href="detail-produk.php"><button>Lihat Produk</button></a>
-                    </div>
-                </div>
-            </div>            
+            <?php endforeach; ?>
         </div>
-        
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
         <div class="swiper-pagination"></div>
-        <a href="produk.php"><button>Lihat Selengkapnya</button></a>
+    </div>
+    <div class="btn-selengkapnya">
+    <a href="produk.php" class="btn-selengkapnya"><button>Lihat Selengkapnya</button></a>
     </div>
 
     <!--Section modal login dan register-->
@@ -316,10 +234,8 @@
     <!--===== SCROLL REVEAL =====-->
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-    <!--===== MAIN JS =====-->
-    <script src="assets/script/main.js"></script>
-    
+        <!--===== MAIN JS =====-->
+    <script src="assets/script/main.js?v=<?= time(); ?>"></script>
 
 </body>
 </html>

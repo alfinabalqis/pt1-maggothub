@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css?v=<?= time(); ?>">
 </head>
 <body>
     <!--Navbar-->
@@ -123,7 +123,7 @@
         </div>
     </div>
 
-    <main>
+    <main class="page-produk">
         <!--Searchbar-->
         <div class="wrapper">
             <br>
@@ -136,14 +136,22 @@
                 <div class="icon"><i class="fas fa-search"></i></div>
             </div>
         </div>
-
+    <?php 
+    include 'functions.php';
+    $products = get_rows("list_produk");
+    ?>
         <!--List Products-->
         <div class="products-container">
             <div class="grid-container">
+                <?php foreach($products as $product): ?>
                 <div class="product">
-                    <img src="assets/images/produk/biotech.jpg" alt="" class="gambar">
-                    <img src="assets/images/habis.svg" alt="Is Available" class="is-available">
-                    <h3 class="nama-produk">Maggot BSF</h3>
+                    <img src="assets/images/produk/<?= $product["gambar"]; ?>" alt="" class="gambar">
+                    <?php 
+                    $status = "tersedia";
+                    if($product["stok"] == 0) $status="habis";
+                    ?>
+                    <img src="assets/images/<?= $status; ?>.svg" alt="Is Available" class="is-available">
+                    <h3 class="nama-produk"><?= $product["nama"]; ?></h3>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -153,121 +161,12 @@
                         <span>( 3.5 )</span>
                     </div>
                     <p><strong>Harga</strong></p>
-                    <div class="price">Rp25.000</div>
+                    <div class="price"><?= $product["harga"]; ?></div>
                     <div class="btn-lihat-produk">
                         <a href="#" class="cart">Lihat Produk</a>
                     </div>
                 </div>
-                <div class="product">
-                    <img src="assets/images/produk/biomagg.png" alt="" class="gambar">
-                    <img src="assets/images/tersedia.svg" alt="Is Available" class="is-available">
-                    <h3 class="nama-produk">Maggot BSF</h3>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <span>( 4.5 )</span>
-                    </div>
-                    <p><strong>Harga</strong></p>
-                    <div class="price">Rp25.000</div>
-                    <div class="btn-lihat-produk">
-                        <a href="#" class="cart">Lihat Produk</a>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="assets/images/produk/maggotbarca.jpg" alt="" class="gambar">
-                    <img src="assets/images/habis.svg" alt="Is Available" class="is-available">
-                    <h3 class="nama-produk">Maggot BSF</h3>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <span>( 4.5 )</span>
-                    </div>
-                    <p><strong>Harga</strong></p>
-                    <div class="price">Rp25.000</div>
-                    <div class="btn-lihat-produk">
-                        <a href="#" class="cart">Lihat Produk</a>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="assets/images/produk/maggotsuperijo.jpg" alt="" class="gambar">
-                    <img src="assets/images/habis.svg" alt="Is Available" class="is-available">
-                    <h3 class="nama-produk">Maggot BSF</h3>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <span>( 4.5 )</span>
-                    </div>
-                    <p><strong>Harga</strong></p>
-                    <div class="price">Rp25.000</div>
-                    <div class="btn-lihat-produk">
-                        <a href="#" class="cart">Lihat Produk</a>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="assets/images/produk/super-maggot.png" alt="" class="gambar">
-                    <img src="assets/images/tersedia.svg" alt="Is Available" class="is-available">
-                    <h3 class="nama-produk">Maggot BSF</h3>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <span>( 4.5 )</span>
-                    </div>
-                    <p><strong>Harga</strong></p>
-                    <div class="price">Rp25.000</div>
-                    <div class="btn-lihat-produk">
-                        <a href="#" class="cart">Lihat Produk</a>
-                    </div>
-                </div>
-                
-                <div class="product">
-                    <img src="assets/images/produk/tepung.png" alt="" class="gambar">
-                    <img src="assets/images/tersedia.svg" alt="Is Available" class="is-available">
-                    <h3 class="nama-produk">Maggot BSF</h3>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <span>( 4.5 )</span>
-                    </div>
-                    <p><strong>Harga</strong></p>
-                    <div class="price">Rp25.000</div>
-                    <div class="btn-lihat-produk">
-                        <a href="#" class="cart">Lihat Produk</a>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="assets/images/produk/biotech.jpg" alt="" class="gambar">
-                    <img src="assets/images/habis.svg" alt="Is Available" class="is-available">
-                    <h3 class="nama-produk">Maggot BSF</h3>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <span>( 4.5 )</span>
-                    </div>
-                    <p><strong>Harga</strong></p>
-                    <div class="price">Rp25.000</div>
-                    <div class="btn-lihat-produk">
-                        <a href="#" class="cart">Lihat Produk</a>
-                    </div>
-                </div>
-
+                <?php endforeach; ?>
             </div>
         </div>
     </main>
@@ -312,7 +211,7 @@
     <script src="https://unpkg.com/scrollreveal"></script>
 
     <!--===== MAIN JS =====-->
-    <script src="assets/script/main.js"></script>
+    <script src="assets/script/main.js?v=<?= time(); ?>"></script>
     <!--===== SEARCHING$SUGGESTIONS JS =====-->
     <script src="assets/script/searching.js"></script>
     <script src="assets/script/suggestions.js"></script>

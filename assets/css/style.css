@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap');
 
 /*===== VARIABLES CSS =====*/
 :root{
@@ -18,7 +18,7 @@
 
 /*===== Fuente y tipografia =====*/
 :root{
-  --body-font: 'Poppins', sans-serif;;
+  --body-font: "Poppins", sans-serif;
   --big-font-size: 6.25rem;
   --h2-font-size: 1.25rem;
   --normal-font-size: .938rem;
@@ -50,7 +50,6 @@
 *,::before,::after{
   box-sizing: border-box;
 }
-
 body{
   margin: var(--header-height) 0 0 0;
   font-family: var(--body-font);
@@ -120,8 +119,7 @@ li{
 }
 
 .active {
-  color: #9E5726;
-  font-weight: bolder;
+  color: var(--normal-color);
 }
 
 header {
@@ -197,7 +195,7 @@ button {
   margin-top: 20px;
   color: white;
   padding: 15px 50px;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Poppins','sans-serif';
 }
 
 button.daftar{
@@ -254,7 +252,7 @@ button:hover {
   background-color: var(--normal-color);
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1101px) {
   .hamburger {
     display: none;
   }
@@ -408,6 +406,114 @@ button:hover {
   font-size: var(--normal-font-size);
 }
 
+/* Best Seller */
+.best-container{
+  max-width: 90%;
+}
+.best-container .best-wrapper{
+  padding: 10px;
+}
+
+.best-container .best-wrapper .best-product{
+  position: relative;
+  text-align: center;
+  border-radius: 15px;
+  padding:3rem 2rem;
+  margin: 3rem 2rem;
+  background: #fff;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.4);
+  outline: .1rem solid #ccc;
+  outline-offset: -1.5rem;
+  cursor: pointer;
+}
+
+.best-container .best-wrapper .best-product:hover{
+  outline: .2rem solid var(--dark-color);
+  outline-offset: 0;
+}
+
+.best-product .is-available {
+  position: absolute;
+  height: 1.8rem;
+  z-index: 2;
+  right: 10%;
+}
+
+.best-container .best-wrapper .best-product .gambar{
+  height: 6rem;
+}
+
+.best-container .best-wrapper .best-product:hover .gambar{
+  transform: scale(.9);
+}
+
+.best-product .nama-produk{
+  position: relative;
+  left: 5%;
+   max-width: 17ch;
+   color:#000;
+   overflow: hidden;
+   white-space: nowrap; 
+   text-overflow: ellipsis;
+}
+
+.best-product .stars{
+  font-size: 1rem;
+}
+
+.best-product .stars i{
+  color:orange;
+}
+
+.best-product .stars span{
+  color:#999;
+}
+
+.best-product p{
+  color:#8D959E;
+}
+
+.best-product .price{
+  font-size: 1.3rem;
+  color:#000;
+}
+
+.best-product .btn-lihat-produk{
+  display: flex;
+  gap:1.5rem;
+  flex-wrap: nowrap;
+  margin-top: 1rem;
+}
+
+.best-product .btn-lihat-produk a{
+  border-radius: 10px;
+  color:#9E5726;
+  border:.1rem solid #9E5726;
+  background: #9E5726;
+  color:#fff;
+}
+
+.best-product .btn-lihat-produk a:hover{
+  background: #75350a;
+}
+
+.swiper-button-next:after, .swiper-button-prev:after{
+  color: var(--normal-color);
+}
+
+.swiper-pagination-clickable .swiper-pagination-bullet{
+  height: 7px;
+  width: 26px;
+  border-radius: 25px;
+  background: var(--normal-color);
+}
+
+.btn-selengkapnya{
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  margin-bottom: 30px;
+}
 /* ===== Searching =====*/
 .wrapper{
   position: absolute;
@@ -424,10 +530,10 @@ button:hover {
   box-shadow: 0px 1px 5px 3px rgba(0,0,0,0.12);
 }
 .search-input input{
-  height: 55px;
+  height: 40px;
   width: 100%;
-  outline: none;
-  border: none;
+  outline: auto var(--dark-color);
+  border: var(--normal-color);
   border-radius: 5px;
   padding: 0 60px 0 20px;
   font-size: 18px;
@@ -452,7 +558,7 @@ button:hover {
 }
 .autocom-box li{
   list-style: none;
-  padding: 8px 12px;
+  padding: 6px 10px;
   display: none;
   width: 100%;
   cursor: default;
@@ -469,71 +575,143 @@ button:hover {
   position: absolute;
   right: 0px;
   top: 0px;
-  height: 55px;
-  width: 55px;
+  height: 40px;
+  width: 40px;
   text-align: center;
-  line-height: 55px;
+  line-height: 40px;
   font-size: 20px;
   cursor: pointer;
 }
 
-/* ===== List Produk =====*/
-.fix-img img {
-  width: 100px;
-}
-.container {
-  padding: 100px;
+/* List Produk  Page*/
+.page-produk {
+  overflow-x: hidden;
 }
 
-.container h1{
-  margin-left: 4%;
+.page-produk * {
+  margin:0; padding:0;
+   outline: none; border:none;
+   text-decoration: none;
+   transition: all .2s linear;
+   text-transform: capitalize;
 }
 
-.container.produk{
-  text-align: center;
-  margin-bottom: 30px;
+.products-container{
+  max-width: 1200px;
+  margin:0 auto;
+  margin-top: 70px;
+  padding:3rem 2rem;
 }
 
-.row {
+
+.products-container .grid-container{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
 }
 
-.container.produk .row > div{
-  flex-basis: 32%;
+.products-container .grid-container .product{
+  position: relative;
+  text-align: center;
+  border-radius: 15px;
+  padding:3rem 2rem;
+  width: 20rem;
+  margin-bottom: 3rem;
+  background: #fff;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.4);
+  outline: .1rem solid #ccc;
+  outline-offset: -1.5rem;
+  cursor: pointer;
 }
 
-h3{
-  margin: 20px 0px;
-  
+.products-container .grid-container .product:hover{
+  outline: .2rem solid var(--dark-color);
+  outline-offset: 0;
 }
-.col-3 .produk {
-  padding: 20px;
-  margin: 20px 10px;
+
+.is-available {
+  position: relative;
+   height: 2rem;
+   float: right;
+}
+
+.products-container .grid-container .product .gambar{
+  position: relative;
+  left: 13%;
+  height: 8rem;
+}
+
+.products-container .grid-container .product:hover .gambar{
+  transform: scale(.9);
+}
+
+.nama-produk{
+  position: relative;
+  left: 9%;
+   max-width: 17ch;
+   color:#000;
+   overflow: hidden;
+   white-space: nowrap; 
+   text-overflow: ellipsis;
+}
+
+.stars{
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.stars i{
+  color:orange;
+}
+
+.stars span{
+  color:#999;
+}
+
+.product p{
+  color:#8D959E;
+}
+
+.price{
+  font-size: 1.3rem;
+  color:#000;
+}
+
+.btn-lihat-produk{
+  display: flex;
+  gap:1.5rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.btn-lihat-produk a{
+  flex:1 1 9rem;
+  padding:0.6rem;
   border-radius: 10px;
-  background-color: white;
-  border:  1px solid #DEE1E5;
-}
-.col-3 .produk .img-produk{
-  text-align: center;
-  margin: 10px 0px 30px;
-}
-.img-produk .stok{
-  float: right;
-  margin-left: -50px;
-}
-.col-3 .produk .harga{
-  text-align: center;
-}
-.col-3 .produk p{
-  margin-top: 20px;
+  color:#9E5726;
+  border:.1rem solid #9E5726;
+  background: #9E5726;
+  color:#fff;
 }
 
-hr{
-  border: 1px solid #DEE1E5;
-  /* margin: 10px 0px; */
-  float: left;
+.btn-lihat-produk a:hover{
+  background: #75350a;
+}
+
+@media (max-width:991px){
+
+  html{
+     font-size: 55%;
+  }
+
+}
+
+@media (max-width:450px){
+
+  html{
+     font-size: 50%;
+  }
 }
 
 /*Footer*/
@@ -628,7 +806,6 @@ li.list-name {
   margin-left: 8px;
   font-weight: 400;
   letter-spacing: 0.135rem;
-  text-align: center;
 }
 
 /*Modal*/
@@ -924,7 +1101,7 @@ small, .sandi{
   border: 1px solid #8D959E;
   border-radius: 8px;
   font-weight: bold;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Poppins','sans-serif';
 }
 
 .jumlah-produk .button button{
@@ -1003,184 +1180,6 @@ button.beli{
 .form-produk button{
   width: 100%;
 }
-
-/*List Produk*/
-
-.products-container{
-  max-width: 1200px;
-  margin:0 auto;
-  padding:3rem 2rem;
-}
-
-
-.products-container .grid-container{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-  gap:2rem;
-  margin-top: 60px;
-}
-
-.products-container .grid-container .product{
-   position: relative;
-  text-align: center;
-  padding:3rem 2rem;
-  background: #fff;
-  box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
-  outline: .1rem solid #ccc;
-  outline-offset: -1.5rem;
-  cursor: pointer;
-}
-
-.products-container .grid-container .product:hover{
-  outline: .2rem solid #222;
-  outline-offset: 0;
-}
-
-.is-available {
-  position: relative;
-   height: 3rem;
-   float: right;
-}
-
-.products-container .grid-container .product .gambar{
-  position: relative;
-  left: 10%;
-  height: 22rem;
-}
-
-.products-container .grid-container .product:hover .gambar{
-  transform: scale(.9);
-}
-
-.nama-produk{
-  position: relative;
-  left: 12%;
-   max-width: 17ch;
-   color:#000;
-   overflow: hidden;
-   white-space: nowrap; 
-   font-size: 2.5rem;
-   text-overflow: ellipsis;
-}
-
-.stars{
-  margin-bottom: 2rem;
-  font-size: 1.5rem;
-}
-
-.stars i{
-  color:orange;
-}
-
-.stars span{
-  color:#999;
-}
-
-p{
-  /* font-size: 1.6rem; */
-  color:#8D959E;
-}
-
-.price{
-  font-size: 2.3rem;
-  color:#000;
-}
-
-.btn-lihat-produk{
-  display: flex;
-  gap:1.5rem;
-  flex-wrap: wrap;
-  margin-top: 1rem;
-}
-
-.btn-lihat-produk a{
-  flex:1 1 9rem;
-  padding:1rem;
-  font-size: 1.8rem;
-  color:#9E5726;
-  border:.1rem solid #9E5726;
-  background: #9E5726;
-  color:#fff;
-  border-radius: 10px;
-  font-size: 1.5rem;
-}
-
-.btn-lihat-produk a:hover{
-  background: #75350a;
-}
-
-/*Swiper Slide*/
-.swiper {
-  width: 100%;
-  height: 100%;
-}
-
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-
-  /* Center slide text vertically */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-@media (max-width:991px){
-
-  html{
-     font-size: 55%;
-  }
-  .product{
-    text-align: center;
- }
-
-}
-
-@media (max-width:450px){
-
-  html{
-     font-size: 50%;
-  }
-  .nav .nav__logo h1{
-    font-size: 20px;
-  }
-  .nav .nav__logo{
-    padding: 5px 0px;
-  }
-  .wrapper .search-input{
-    margin-top: 10px;
-  }
-  .product{
-     text-align: center;
-  }
-  .nama-produk{
-    left: 0px;
-    max-width: none;
-  }
-  footer .container{
-    padding: 30px;
-  }
-  .footer-bottom{
-    text-align: left;
-  }
-}
 @media only screen and (max-width: 768px){
   body{
     overflow-x: hidden;
@@ -1251,7 +1250,7 @@ p{
     justify-content: left;
   }
   .footer-desc {
-    margin-left: 7%;
+    margin-left: 15%;
   }
   .footer-list {
     flex-wrap: wrap;

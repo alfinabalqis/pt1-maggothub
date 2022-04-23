@@ -93,16 +93,13 @@ sr.reveal('.tentang__text', {delay: 200})
 
 /*SCROLL BEST SELLER*/
 sr.reveal('#best-seller', {})
-sr.reveal('.fix-img', {interval: 200})
-sr.reveal('.home__subtitle', {})
+sr.reveal('.best-wrapper', {delay: 200})
+sr.reveal('.product', {interval: 100})
 
 /*=====HIDE AND SHOW FORM=====*/
 function show(){  
     var div = document.getElementById("form-pembelian");  
     div.style.display = "block";
-    // if (div.style.display !== "none") 
-    // {  div.style.display = "none";  }  
-    // else {  div.style.display = "block";  }  
 }
 
 function hide(){
@@ -110,12 +107,12 @@ function hide(){
     hide.style.display = "none";
 }
 
+
 var swiper = new Swiper(".mySwiper", {
-    slidesPerView: 3,
-    spaceBetween: 30,
-    slidesPerGroup: 3,
+    slidesPerView: 4,
+    spaceBetween: 20,
+    maxSlidesPerGroup: 3,
     loop: true,
-    loopFillGroupWithBlank: true,
     pagination: {
       el: ".swiper-pagination",
       clickable: true,
