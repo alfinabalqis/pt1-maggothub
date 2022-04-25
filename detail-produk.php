@@ -1,3 +1,9 @@
+<?php 
+    include 'functions.php';
+    $product_id = $_GET["id"];
+    $product = get_rows_from("list_produk WHERE id = $product_id")[0];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -123,10 +129,10 @@
     </div>
 
     <!--Produk-->
-    <section class="container informasi-produk d-inline-flex">
+    <section class="container-detail informasi-produk d-inline-flex">
         <div class="d-inline-flex">
-            <div>
-                <img src="assets/images/produk/super-maggot.png" alt="">
+            <div class="anim-left">
+                <img src="assets/images/produk/<?= $product["gambar"]; ?>" alt="">
                 <div>
                     <h3>Toko Maggot</h3>
                     <div class="d-inline-flex">
@@ -134,10 +140,11 @@
                         <p>Sukabirus, Bandung</p>
                     </div>
                 </div>
+                <h1 style="margin-top: 100px;">Deskripsi</h1>
             </div>
-            <div class="deskripsi-image">
+            <div class="deskripsi-image anim-left">
                 <div>
-                    <h3>SUPER MAGGOT Kering</h3>
+                    <h3><?= $product["nama"]; ?></h3>
                 </div>
                 <div class="d-inline-flex row-desc">
                     <div class="d-inline-flex">
@@ -154,24 +161,24 @@
                     </div>
                 </div>
                 <div>
-                    <h2><b>Rp 25.000</b></h2>
+                    <h2><b><?= rupiah($product["harga"]);?></b></h2>
                 </div>
             </div>
         </div>
-        <div class="jumlah-produk">
+        <div class="jumlah-produk anim-right">
             <div>
                 <h2>Jumlah Produk</h2>
                 <div class="form-group">
                     <label>Jumlah Barang</label> <br>
                     <input type="number" id="quantity" name="quantity" min="1" max="5">
-                    <span>Rp. 25.000</span>
+                    <span><?= rupiah($product["harga"]);?></span>
                 </div>
                 <div class="subtotal">
                     <label>Subtotal</label> <br>
                     <button>Rp. 50.000</button>
                 </div>
                 <div class="button">
-                    <a href="https://wa.me/088980077538?text=Halo,%20apakah%20produk%20ini%20masih%20ada?" target="_blank"><button>Chat Penjual</button></a> <br>
+                    <a href="https://wa.me/088980077538?text=Halo,%20apakah%20produk%20ini%20masih%20ada?" target="_blank"><button class="chat">Chat Penjual</button></a> <br>
                     <button class="beli" onclick="show()">Beli Sekarang</button>
                 </div>
             </div>
@@ -179,17 +186,12 @@
     </section>
 
     <!--Deskipsi-->
-    <div class="container deskripsi-produk">
-        <hr>
-        <h1>Deskripsi</h1>
-        <p>Merupakan satu-satunya produk dengan khasiat pelet dalam bentuk organik Udang & Maggot BSF pilihan kualitas terbaik. Di Formulasikan khusus hasil olah racikan organik dari sari-sari tumbuhan & hewani. ProVitamin, More High Protein - HI-GROWTH, Max Color Enhancer & zat-zat alami dihabitatnya yg mendukung Progress Warna, sisik (arwana), jenong (louhan) marking, STRIP/SPOT/DOT, Bulky pada ikan Koi dan khusus Bakat Bunga (Channa Maru). Progress ikan kesayangan anda semakin optimal. <br><br>
- 
-        Merupakan satu-satunya produk dengan khasiat pelet dalam bentuk organik Udang & Maggot BSF pilihan kualitas terbaik. Di Formulasikan khusus hasil olah racikan organik dari sari-sari tumbuhan & hewani. ProVitamin, More High Protein - HI-GROWTH, Max Color Enhancer & zat-zat alami dihabitatnya yg mendukung Progress Warna, sisik (arwana), jenong (louhan) marking, STRIP/SPOT/DOT, Bulky pada ikan Koi dan khusus Bakat Bunga (Channa Maru). Progress ikan kesayangan anda semakin optimal.
-        </p>
+    <div class="container-detail deskripsi-produk anim-left">
+        <p><?= $product["deskripsi"] ?></p>
     </div>
-
+    
     <!--Form Pembelian-->
-    <div class="container form-pembelian" id="form-pembelian">
+    <div class="container-detail form-pembelian" id="form-pembelian">
         <h1>Pembelian Produk</h1>
         <div class="form-produk">
             <h2>Form Pembelian Produk</h2>
@@ -215,7 +217,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                   <textarea name="" id="" cols="30" rows="10"></textarea>
+                <textarea name="" id="" cols="30" rows="10"></textarea>
                 </div>
             </form>  
             <div class="d-inline-flex" style="justify-content: space-between">
@@ -265,10 +267,10 @@
             </div>
         </div>
     </footer>
-        <!--===== SCROLL REVEAL =====-->
-        <script src="https://unpkg.com/scrollreveal"></script>
+    <!--===== SCROLL REVEAL =====-->
+    <script src="https://unpkg.com/scrollreveal"></script>
 
-        <!--===== MAIN JS =====-->
-        <script src="assets/script/main.js"></script>
+    <!--===== MAIN JS =====-->
+    <script src="assets/script/main.js?v=<?= time(); ?>"></script>
 </body>
 </html>

@@ -177,12 +177,15 @@ header {
 }
 
 .nav .nav__list .nav__item {
-  /* font-style: normal;
-  line-height: 19px;
-  font-weight: 500; */
   font-size: 14px;
   display: inline-block;
   margin: 0 10px;
+}
+
+.nav .nav__list img{
+  width: auto;
+  height: 20px !important;
+  margin: auto 10px;
 }
 
 button {
@@ -271,7 +274,7 @@ button:hover {
   width: 100%;
   min-height: 100vh;
   display: block;
-  z-index: 98;
+  z-index: 1;
   background-color: rgba(255,255,255,.3);
   transition: 0.5s;
   backdrop-filter: blur(6px);
@@ -520,7 +523,7 @@ button:hover {
   left: 25%;
   width: 50%;
   margin-bottom: 10%;
-  z-index: 2;
+  z-index: 1;
 }
 .wrapper .search-input{
   background: #fff;
@@ -529,49 +532,31 @@ button:hover {
   position: relative;
   box-shadow: 0px 1px 5px 3px rgba(0,0,0,0.12);
 }
-.search-input input{
+
+.search-input input[type="text"] {
   height: 40px;
   width: 100%;
   outline: auto var(--dark-color);
   border: var(--normal-color);
   border-radius: 5px;
-  padding: 0 60px 0 20px;
+  padding: 0 60px 0 10px;
   font-size: 18px;
   box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
 }
-
-.search-input.active input{
-  border-radius: 5px 5px 0 0;
-}
-.search-input .autocom-box{
-  padding: 0;
-  opacity: 0;
-  pointer-events: none;
-  max-height: 280px;
-  overflow-y: auto;
-}
-.search-input.active .autocom-box{
-  background: #fff;
-  padding: 10px 8px;
-  opacity: 1;
-  pointer-events: auto;
-}
-.autocom-box li{
-  list-style: none;
-  padding: 6px 10px;
-  display: none;
+.list {
   width: 100%;
-  cursor: default;
-  border-radius: 3px;
+  background-color: #ffffff;
+  border-radius: 0 0 5px 5px;
 }
-.search-input.active .autocom-box li{
-  color: #000;
-  display: block;
+.list-items {
+  border: 2px solid var(--dark-color);
+  padding: 40px 5px;
 }
-.autocom-box li:hover{
-  background: #efefef;
+.list-items:hover {
+  background-color: var(--light-color);
 }
-.search-input .icon{
+.search-input .icon-search{
+  all: unset;
   position: absolute;
   right: 0px;
   top: 0px;
@@ -599,11 +584,20 @@ button:hover {
 .products-container{
   max-width: 1200px;
   margin:0 auto;
-  margin-top: 70px;
+  margin-top: 50px;
   padding:3rem 2rem;
 }
 
-
+.not-found{
+  margin-top: 80px;
+  text-align: center;
+}
+.not-found img {
+  height: 400px;
+}
+.not-found p {
+  color: gray;
+}
 .products-container .grid-container{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
@@ -1021,19 +1015,18 @@ small, .sandi{
   display: flex;
 }
 
-.d-inline-flex b{
-  margin-right: 5px;
+.container-detail {
+  padding: 0 5rem;
 }
-
 .informasi-produk{
-  margin-top: 5em;
+  margin-top: 8em;
   justify-content: space-around;
   padding-bottom: 0px;
 }
 
 .deskripsi-produk {
-  margin: 0px 60px;
-  margin-top: -13em;
+  margin: 0px 70px;
+  margin-bottom: 3rem;
 }
 
 .deskripsi-produk hr{
@@ -1044,7 +1037,7 @@ small, .sandi{
   font-size: 14px;   
   text-align: justify;
   color: #46505C;
-  margin-top: 3em;
+  margin-top: 2em;
 }
 
 .deskripsi-produk h1{
@@ -1052,10 +1045,6 @@ small, .sandi{
   font-size: 24px;
   font-weight: bold;
 }
-
-/* .deskripsi-produk hr{
-  width: 70%;
-} */
 
 .deskripsi-image{
   margin: 0px 30px;
@@ -1101,7 +1090,6 @@ small, .sandi{
   border: 1px solid #8D959E;
   border-radius: 8px;
   font-weight: bold;
-  font-family: 'Poppins','sans-serif';
 }
 
 .jumlah-produk .button button{
@@ -1121,7 +1109,7 @@ input#quantity{
   margin-left: 5px;
 }
 
-button.beli{
+button.chat{
   border: 1px solid #9E5726;
   color: #9E5726;
   background: #ffffff;
@@ -1135,10 +1123,6 @@ button.beli{
   border-radius: 12px;
   padding-top: 50px;
   padding-bottom: 80px;
-}
-
-.form-pembelian h1{
-  margin: 20px 0px 40px;
 }
 
 .form-produk{
@@ -1180,6 +1164,28 @@ button.beli{
 .form-produk button{
   width: 100%;
 }
+
+/**UPLOAD PRODUK**/
+.upload-gambar{
+  width: 80%;
+  margin-left: 40px;
+}
+
+.upload-gambar button{
+  margin-bottom: 20px;
+}
+.file-area {
+  width: 100%;
+  position: relative;
+}
+.file-area input[type=file] {
+  position: absolute;
+  width: 100%;
+  height: 300px;
+  cursor: pointer;
+  background: #E9DFDF;
+}
+
 @media only screen and (max-width: 768px){
   body{
     overflow-x: hidden;

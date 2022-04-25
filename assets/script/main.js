@@ -96,6 +96,10 @@ sr.reveal('#best-seller', {})
 sr.reveal('.best-wrapper', {delay: 200})
 sr.reveal('.product', {interval: 100})
 
+// SCROLL DETAIL PRODUK
+sr.reveal('.anim-left', {origin:'left', delay: 400})
+sr.reveal('.anim-right', {origin:'right', delay: 400})
+
 /*=====HIDE AND SHOW FORM=====*/
 function show(){  
     var div = document.getElementById("form-pembelian");  
@@ -106,7 +110,6 @@ function hide(){
     var hide = document.getElementById("form-pembelian");
     hide.style.display = "none";
 }
-
 
 var swiper = new Swiper(".mySwiper", {
     slidesPerView: 4,

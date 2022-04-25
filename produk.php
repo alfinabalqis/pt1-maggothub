@@ -1,3 +1,12 @@
+<?php 
+    include 'functions.php';
+    $products = get_rows_from("list_produk");
+    
+    // Ketika tombol cari ditekan
+    if(isset($_POST["cari"])) {
+        $products = cari_produk($_POST["keyword"]);
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -128,19 +137,21 @@
         <div class="wrapper">
             <br>
             <div class="search-input">
-                <a href="" target="_blank" hidden></a>
-                <input type="text" placeholder="Cari?">
-                <div class="autocom-box">
-                <!-- here list are inserted from javascript -->
-                </div>
-                <div class="icon"><i class="fas fa-search"></i></div>
+                <form action="" method="post" autocomplete="off">
+                    <input type="text" id="input" name="keyword" placeholder="Cari sesuatu?" />
+                    <ul class="list"></ul>
+                    <button type="submit" name="cari" class="icon-search"><i class="fas fa-search"></i></button>
+                </form>
             </div>
         </div>
-    <?php 
-    include 'functions.php';
-    $products = get_rows("list_produk");
-    ?>
         <!--List Products-->
+        <?php if(empty($products)): ?>
+            <div class="not-found">
+                <img src="assets/images/notfound.svg" alt="Not Found">
+                <h2>Oops, produk tidak ditemukan</h2>
+                <p>Coba kata kunci lain atau cek produk lain</p> 
+            </div>
+        <?php endif; ?>
         <div class="products-container">
             <div class="grid-container">
                 <?php foreach($products as $product): ?>
@@ -161,9 +172,9 @@
                         <span>( 3.5 )</span>
                     </div>
                     <p><strong>Harga</strong></p>
-                    <div class="price"><?= $product["harga"]; ?></div>
+                    <div class="price"><?= rupiah($product["harga"]); ?></div>
                     <div class="btn-lihat-produk">
-                        <a href="#" class="cart">Lihat Produk</a>
+                        <a href="detail-produk.php?id=<?= $product["id"]; ?>">Lihat Produk</a>
                     </div>
                 </div>
                 <?php endforeach; ?>
@@ -212,8 +223,15 @@
 
     <!--===== MAIN JS =====-->
     <script src="assets/script/main.js?v=<?= time(); ?>"></script>
-    <!--===== SEARCHING$SUGGESTIONS JS =====-->
-    <script src="assets/script/searching.js"></script>
-    <script src="assets/script/suggestions.js"></script>
+    <!--===== SEARCHING & SUGGESTIONS JS =====-->
+    <script>
+        var names = [];
+        <?php 
+        $all_products = get_rows_from("list_produk");
+        foreach($all_products as $product): ?>
+        names.push("<?= $product["nama"]; ?>");
+        <?php endforeach; ?>
+    </script>
+    <script src="assets/script/searching.js?v=<?= time(); ?>"></script>
 </body>
 </html>

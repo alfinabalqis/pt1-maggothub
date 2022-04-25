@@ -1,3 +1,8 @@
+<?php 
+    include 'functions.php';
+    $bests = get_rows_from("list_produk WHERE is_best_seller = '1'");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +32,22 @@
 					<a href="index.php#tentang-bsf" class="nav__link"><li class="nav__item"><strong>Tentang BSF</strong></li></a>
 				</ul>
 			</div>
+            <?php if(isset($_GET["user-id"])): ?>
+            <div class="nav__menu" id="nav-menu">
+				<ul class="nav__list" style="display: flex;">
+					<a href="#" class="nav_link">
+                        <img src="assets/images/ic-notif.png" alt="">
+                    </a>
+                    <a href="upload.php" class="nav_link">
+                        <img src="assets/images/ic-upload.png" alt="">
+                    </a>
+                    <a href="#" class="nav_link d-inline-flex">
+                        <img src="assets/images/ic-profil.png" alt="">
+                    </a>
+				</ul>
+			</div>
+            <?php endif; ?>
+            <?php if(!isset($_GET["user-id"])): ?>
             <div class="nav__menu" id="nav-menu">
 				<ul class="nav__list">
 					<a class="nav__link active" id="open-masuk" style="cursor: pointer;">
@@ -37,6 +58,7 @@
                     </a>
 				</ul>
 			</div>
+            <?php endif; ?>
             <button class="hamburger">
                 <span></span>
                 <span></span>
@@ -107,10 +129,6 @@
     </section>
 
     <!--Produk Best Seller-->
-    <?php 
-    include 'functions.php';
-    $bests = get_rows("list_produk WHERE is_best_seller = '1'");
-    ?>
     <div class="swiper mySwiper best-container">
         <h1 id="best-seller">Best Seller</h1>
         <div class="swiper-wrapper best-wrapper">
@@ -132,9 +150,9 @@
                     <span>( 3.5 )</span>
                 </div>
                 <p>Harga</p>
-                <div class="price"><?= $best["harga"]; ?></div>
+                <div class="price"><?= rupiah($best["harga"]); ?></div>
                 <div class="btn-lihat-produk">
-                    <a href="/detail-produk.php">Lihat Produk</a>
+                    <a href="detail-produk.php?id=<?= $best["id"]; ?>">Lihat Produk</a>
                 </div>
             </div>
             <?php endforeach; ?>
