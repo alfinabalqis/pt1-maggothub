@@ -44,6 +44,10 @@ navLink.forEach(n => n.addEventListener('click', function(){
     mobile_menu.classList.remove('is-active');
 }))
 
+/*===== SHOW NOTIF =====*/ 
+function showDropDown(){
+    document.querySelector('.dropdown-content').classList.toggle('show');
+}
 // /*Add active class*/
 // const beranda = document.getElementById('beranda')
 // function beranda(){

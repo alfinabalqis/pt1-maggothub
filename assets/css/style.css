@@ -50,6 +50,9 @@
 *,::before,::after{
   box-sizing: border-box;
 }
+html{
+  scroll-behavior: smooth;
+}
 body{
   margin: var(--header-height) 0 0 0;
   font-family: var(--body-font);
@@ -162,10 +165,10 @@ header {
 }
 
 .nav .nav__menu {
-  /* padding-right: 6%;
-  flex-basis: 80%;
-  width: 50%; */
   margin: auto;
+}
+.nav .nav__menu a{
+  transition: all 1s ease-in-out;
 }
 
 .nav .nav__list {
@@ -182,9 +185,9 @@ header {
   margin: 0 10px;
 }
 
-.nav .nav__list img{
+.nav .nav__list .nav__img{
   width: auto;
-  height: 20px !important;
+  height: 25px;
   margin: auto 10px;
 }
 
@@ -199,6 +202,7 @@ button {
   color: white;
   padding: 15px 50px;
   font-family: 'Poppins','sans-serif';
+  transition: all .6s ease-in-out;
 }
 
 button.daftar{
@@ -1184,6 +1188,87 @@ button.chat{
   height: 300px;
   cursor: pointer;
   background: #E9DFDF;
+}
+
+/* NOTIF STYLING */
+.dropdown-content {
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  margin-left: -12em;
+  margin-top: 2em;
+  padding: 10px;
+  border-radius: 8px;
+  background: #ffffff;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0);
+  transform-origin: top;
+  transition: transform .3s linear, opacity .3s;
+}
+
+.dropdown-content h1{
+  margin: 5px 0px 10px;
+  color: #000000;
+  font-weight: bold;
+}
+
+.dropdown-list {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.dropdown-list .detail{
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 10px;
+  text-align: left;
+}
+
+.dropdown-list .detail img{
+  margin-top: 10px;
+  height: 60px;
+}
+
+.notif{
+  background: rgba(0, 0, 0, 0.0373);
+  border: 1px solid rgba(0, 0, 0, 0.0373);
+  border-radius: 3px;
+  margin-left: 15px;
+  margin-bottom: 10px;
+  padding: 15px;
+  color: #1F2A36;
+}
+
+.notif h2{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.notif p {
+  font-size: 13px;
+  font-weight: normal;
+}
+
+.notif p span {
+  font-weight: bold;
+}
+
+.dropdown-content .detail:hover {
+  background-color: #dbd6d6;
+}
+
+.dropdown-content.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.dropdown-content::before{
+  inset: -3px auto auto;
+  transform: translateX(-50%)
+  rotate(45deg);
 }
 
 @media only screen and (max-width: 768px){
