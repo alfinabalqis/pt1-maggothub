@@ -1,3 +1,20 @@
+<?php 
+require 'functions.php';
+
+if(isset($_POST["register"])){
+  if(register($_POST, "pembeli") > 0){
+    session_start();
+    $_SESSION['msg1'] = "Successful";
+    $_SESSION['email'] = $_POST['email'];
+    $_SESSION['pass'] = $_POST['password1'];
+    header("Location: login-pembeli.php");
+    exit;
+  } else {
+    mysqli_error($koneksi);
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,73 +22,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MaggotHub</title>
     <link rel="shortcut icon" href="assets/img/icon.png" type="image/x-icon">
-
-    <!--Stylesheet-->
+    <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon">
+    
+    <!--Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="./assets/css/style.css?v=<?= time(); ?>">
+
+    <!-- MDB -->
+    <link rel="stylesheet" href="./assets/css/mdb/mdb.min.css?v=<?= time(); ?>" />
+    
+    <link rel="stylesheet" href="./assets/css/style.css?v=<?= time(); ?>">    
 </head>
 <body>
-
   <div class="register-content">
     <div class="register-form col-md-6">
+      <p class="back2home">&#8249; <a href="index.php">Beranda</a>
+
       <div class="register">
         <div class="title">
           <h2>Daftar</h2>
           <h3>Sebagai Pembeli</h3>
       </div>
-      <div class="register mt-5">
-          <form>
-            <div class="form-group">
-                <label>Nama Lengkap</label>
-                <input type="names" class="form-control" placeholder="Masukkan Username">
+      <div class="register mt-4">
+          <form action="" method="post">
+              <div class="form-group form-outline flex-fill mb-3">
+                <input type="names" class="form-control" id="nama" name="nama" required>
+                <label class="form-label required" for="nama">Nama Lengkap</label>
               </div>
 
-              <div class="d-inline-flex">
-                <div class="form-group half">
-                    <label>No Whatsapp</label>
-                    <input type="number" class="form-control" placeholder="Masukkan Email">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group form-outline">
+                    <input type="email" class="form-control" id="email" name="email" required>
+                    <label class="form-label required" for="email">Email</label>
                   </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group form-outline">
+                    <input type="tel" class="form-control" id="no-wa" name="no-wa" required>
+                    <label class="form-label required" for="no-wa">Nomor Whatsapp</label>
+                  </div>
+                </div>
+              </div>
     
-                  <div class="form-group half">
-                    <label>Email</label>
-                    <input type="email" class="form-control" placeholder="Masukkan Email">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group form-outline">
+                    <input type="password" class="form-control" id="password1" name="password1" required>
+                    <label class="form-label required" for="password1">Password</label>
                   </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group form-outline">
+                    <input type="password" class="form-control" id="password2" name="password2" required>
+                    <label class="form-label required" for="password2">Ulangi Password</label>
+                  </div>
+                </div>
               </div>
 
-              <div class="d-inline-flex">
-                <div class="form-group half">
-                    <label>Kata Sandi</label>
-                    <input type="password" class="form-control" placeholder="Masukan Password" id="myInput">
-                    <span class="eye" onclick="myFunction()">
-                      <i id="hide" class="fa fa-eye" aria-hidden="true"></i>
-                      <i  id="hide2" class="fa fa-eye-slash" aria-hidden="true"></i>
-                    </span>
-                  </div>
-    
-                  <div class="form-group half">
-                    <label>Ulangi Kata Sandi</label>
-                    <input type="password" class="form-control" placeholder="Masukan Password" id="myInput">
-                    <span class="eye" onclick="myFunction()">
-                      <i id="hide" class="fa fa-eye" aria-hidden="true"></i>
-                      <i  id="hide2" class="fa fa-eye-slash" aria-hidden="true"></i>
-                    </span>
-                  </div>
+              <div class="form-group form-outline flex-fill mb-3">
+                  <textarea type="text" class="form-control" id="alamat" name="alamat" rows="3" required></textarea>
+                  <label class="form-label required" for="alamat">Alamat Lengkap</label>
               </div>
-
-              <div class="form-group">
-                  <label>Alamat</label>
-                  <input type="text" class="form-control" placeholder="Masukkan Alamat">
+              
+              <div class="btn-register">
+                <button type="submit" name="register" class="btn btn-login mt-3">Daftar</button>
               </div>
-          </form>
-  
-          <div class="btn-register">
-              <button type="submit" class="btn btn-login mt-3">Daftar</button>
-          </div>
+            </form>
 
-          <div class="akun mt-3">
-            <p>Anda udah Memiliki akun? <a href="login-pembeli.php">Masuk</a> disini</p>
+          <div class="akun ml-2 mt-3">
+            <p>Sudah memiliki akun? <a href="login-pembeli.php">Masuk</a> disini</p>
           </div>
       </div>
       </div>
@@ -82,10 +102,13 @@
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  <script src="assets/script/main.js"></script>
+  <script src="assets/script/main.js?v=<?= time(); ?>"></script>
+  <!--===== SCROLL REVEAL =====-->
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <!-- MDB -->
+  <script type="text/javascript" src="assets/script/mdb.min.js?v=<?= time(); ?>"></script>
+
 </body>
 </html>
 

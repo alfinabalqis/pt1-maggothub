@@ -1,3 +1,20 @@
+<?php 
+require 'functions.php';
+
+session_start();
+if(!empty($_SESSION['msg1'])) {
+   echo "<script>
+            alert('Akun pembeli baru berhasil ditambahkan');
+        </script>";
+} else {
+  $_SESSION['email'] = '';
+  $_SESSION['pass'] = '';
+}
+
+if(isset($_POST["login"])) {
+  login($_POST, "pembeli");
+}?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,55 +27,62 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon">
+    <!-- MDB -->
+    <link rel="stylesheet" href="./assets/css/mdb/mdb.min.css?v=<?= time(); ?>" />
+
     <link rel="stylesheet" href="./assets/css/style.css?v=<?= time(); ?>">
-    
 </head>
 <body>
 
-  <div class="register-content">
-    <div class="register-form col-md-6">
+  <div class="register-content" style="padding-right: 10em;">
+    <div class="register-form col-md-6 mt-5">
+    <p class="back2home">&#8249; <a href="index.php">Beranda</a>
+
       <div class="register">
-        <div class="title mt-5">
-          <h2>Welcome Back</h2>
-          <h3>Temukan Produk Olahan Maggot <br>Dengan Mudah</h3>
+        <div class="title mt-5" style="text-align: justify;">
+          <h2>SELAMAT DATANG DI MAGGOTHUB</h2>
+          <h3>Temukan aneka produk olahan Maggot BSF dengan mudah</h3>
       </div>
-      <div class="register mt-5">
-          <form>
-              <div class="form-group">
-                <label>Email</label>
-                <input type="email" class="form-control" placeholder="Masukkan Email">
-              </div>
+      <div class="register mt-4">
+      
+      <form action="" method="post">
+        <div class="form-group form-outline flex-fill mb-3">
+          <input type="email" class="form-control" id="email" name="email" value="<?= $_SESSION['email'] ?>" required>
+          <label class="form-label required" for="email">Email</label>
+        </div>
 
-              <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control" placeholder="Masukan Password" id="myInput">
-                <span class="eye login" onclick="myFunction()">
-                  <i id="hide" class="fa fa-eye" aria-hidden="true"></i>
-                  <i  id="hide2" class="fa fa-eye-slash" aria-hidden="true"></i>
-                </span>
-              </div>                 
-          </form>
-  
-          <div class="btn-register">
-            <button type="submit" class="btn btn-login mt-3">Login</button>
-          </div>
-
-          <div class="akun mt-3">
-            <p>Belum Memiliki akun? <a href="register-pembeli.php">Register</a></p>
+        <div class="form-group form-outline flex-fill mb-3">
+          <input type="password" class="form-control" id="password" name="password" value="<?= $_SESSION['pass']; ?>"/>
+          <label class="form-label required" for="password">Password</label>
+        </div>
+        
+        <div class="btn-register">
+          <button type="submit" name="login" class="btn btn-login mt-3">Masuk</button>
+        </div>
+      </form>
+          <div class="akun ml-0 mt-3">
+            <p>Belum memiliki akun? <a href="register-pembeli.php">Daftar</a> di sini</p>
           </div>
       </div>
       </div>
     </div>
 
-    <div class="register-ilus">
+    <div class="register-ilus" style="height: 60%;">
       <img src="assets/images/login.svg" alt="" class="login animated">
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  <script src="assets/script/main.js"></script>
+  <?php  
+  $_SESSION = [];
+  session_unset();
+  session_destroy();
+  ?>
+
+  <script src="assets/script/main.js?v=<?= time(); ?>"></script>
+  <!--===== SCROLL REVEAL =====-->
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <!-- MDB -->
+  <script type="text/javascript" src="assets/script/mdb.min.js?v=<?= time(); ?>"></script>
 </body>
 </html>
-

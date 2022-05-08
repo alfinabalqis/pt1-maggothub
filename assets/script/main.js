@@ -48,6 +48,10 @@ navLink.forEach(n => n.addEventListener('click', function(){
 function showDropDown(){
     document.querySelector('.dropdown-content').classList.toggle('show');
 }
+/*===== SHOW NOTIF =====*/ 
+function showProfileMenu(){
+    document.querySelector('.profile-menu').classList.toggle('show');
+}
 // /*Add active class*/
 // const beranda = document.getElementById('beranda')
 // function beranda(){

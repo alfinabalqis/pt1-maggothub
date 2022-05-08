@@ -882,6 +882,17 @@ li.list-name {
 }
 
 /*Login Register*/
+.back2home{
+  margin-bottom: 20px;
+  color: var(--normal-color);
+}
+.back2home a {
+  color: var(--normal-color);
+}
+.required:after {
+  content:" *";
+  color: red;
+}
 .logo{
   margin-top: 3em;
 }
@@ -892,11 +903,11 @@ li.list-name {
 }
 
 .register-form {
-  margin-left: 3em !important;
+  margin-left: 6em;
+  padding-right: 8em;
 }
 
 .title h2{
-  margin-top: 2em;
   font-weight: bold;
   font-size: 24px;
   color: #9E5726;
@@ -904,22 +915,21 @@ li.list-name {
 
 .title h3{
   font-size: 18px;
-  margin: 5px 0px;
 }
 
 
 .form-group label, .form-group input{
-  font-weight: 600;
+  margin-top: 2px;
+  font-weight: 400;
   font-size: 14px;
   color: #000000;
 }
 
 .form-group input{
-  border-radius: 8px;
-  width: 65%;
+  height: 40px;
+  /* border-radius: 8px;
   border: 1px solid #CBCED2;
-  height: 48px;
-  font-weight: 400;
+  font-weight: 400; */
 }
 
 .d-inline-flex > div:last-child{
@@ -931,8 +941,7 @@ li.list-name {
 }
 
 .register-ilus img{
-  margin-top: 5em;
-  width: 90%;
+  height: 85%;
 }
 
 .fa{
@@ -982,7 +991,7 @@ small, .sandi{
 }
 
 .btn{
-  width: 65%;
+  width: 100%;
   height: 48px;
   font-size: 16px;
   font-weight: 700;
@@ -995,7 +1004,7 @@ small, .sandi{
 }  
 
 .btn-login:hover{
-  background-color: #F09139;
+  background-color: var(--dark-color);
   color: #fff;
 }
 
@@ -1012,7 +1021,7 @@ small, .sandi{
 }
 
 .akun a{
-  color: #C98E59;
+  color: var(--normal-color);
   font-weight: bold;
 }
 .d-inline-flex{
@@ -1206,6 +1215,19 @@ button.chat{
   transform: scale(0);
   transform-origin: top;
   transition: transform .3s linear, opacity .3s;
+}
+.profile-menu {
+  width: 200px;
+  margin-left: -5em;
+}
+.profile-menu .profile-img{
+  justify-content: center;
+  display: flex;
+  align-items:center;
+}
+.profile-menu .profile-img span{
+  font-weight: normal;
+  padding: 10px;
 }
 
 .dropdown-content h1{

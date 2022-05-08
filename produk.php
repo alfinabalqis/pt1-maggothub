@@ -1,6 +1,6 @@
 <?php 
     include 'functions.php';
-    $products = get_rows_from("list_produk");
+    $products = get_rows_from("products");
     
     // Ketika tombol cari ditekan
     if(isset($_POST["cari"])) {
@@ -227,7 +227,7 @@
     <script>
         var names = [];
         <?php 
-        $all_products = get_rows_from("list_produk");
+        $all_products = get_rows_from("products");
         foreach($all_products as $product): ?>
         names.push("<?= $product["nama"]; ?>");
         <?php endforeach; ?>

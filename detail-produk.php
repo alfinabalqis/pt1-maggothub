@@ -1,7 +1,7 @@
 <?php 
     include 'functions.php';
     $product_id = $_GET["id"];
-    $product = get_rows_from("list_produk WHERE id = $product_id")[0];
+    $product = get_rows_from("products WHERE id = $product_id")[0];
 ?>
 
 <!DOCTYPE html>

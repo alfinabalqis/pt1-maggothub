@@ -1,3 +1,13 @@
+<?php 
+    session_start();
+    
+    if(!isset($_SESSION["login"])){
+        header("Location: index.php");
+        exit;
+    }
+
+    include 'functions.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -129,9 +139,19 @@
                     <a class="nav_link" href="upload.php">
                         <img class="nav__img" src="assets/images/ic-upload.png" alt="">
                     </a>
-                    <a class="nav_link" href="#">
+                    <div class="notif-dropdown">
+                        <a class="nav_link dropbtn" href="#" onclick="showProfileMenu(); return false;">
                         <img class="nav__img" src="assets/images/ic-profil.png" alt="">
-                    </a>
+                        </a>
+                        <div class="profile-menu dropdown-content">
+                            <div class="profile-img">
+                                <img src="assets/images/ic-profil.png">
+                                <span><?= strtok($_SESSION["nama"], " "); ?></span>
+                            </div>
+                            <hr>
+                            <a class="dropdown-item" href="logout.php">Keluar</a> 
+                        </div>
+                    </div>
 				</ul>
 			</div>
             <button class="hamburger">
