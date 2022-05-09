@@ -153,7 +153,7 @@
                                 <span><?= strtok($_SESSION["nama"], " "); ?></span>
                             </div>
                             <hr>
-                            <a class="dropdown-item" href="logout.php">Keluar</a> 
+                            <a class="dropdown-item" href="logout.php" onclick="return confirm('Apakah anda yakin ingin keluar?');">Keluar</a> 
                         </div>
                     </div>
 				</ul>

@@ -68,7 +68,6 @@ function register($data, $status) {
 }
 
 function login($data, $status) {
-    session_start();
     global$koneksi;
     $email = $data["email"];
     $pasword = $data["password"];
@@ -88,6 +87,56 @@ function login($data, $status) {
     echo "<script>
               alert('Email atau password salah');
           </script>";
+}
+
+function tambah($data) {
+    global $koneksi;
+    $id_users = $data["id-users"];
+    $id_penjual = mysqli_fetch_row(mysqli_query($koneksi, 
+                "SELECT id FROM penjual WHERE id_users = $id_users"))[0];
+    $nama_produk = htmlspecialchars($data["nama-produk"]);
+    $harga = htmlspecialchars($data["harga"]);
+    $stok = htmlspecialchars($data["stok"]);
+    $deskripsi = htmlspecialchars($data["deskripsi"]);
+
+    //upload gambar
+    $image_file = upload();
+    if(!$image_file) return false;
+
+    mysqli_query($koneksi, "INSERT INTO product 
+                VALUES ('', $id_penjual, '$nama_produk', $harga, $stok, 
+                '$deskripsi', '$image_file')");
+    
+    return mysqli_affected_rows($koneksi);
+}
+
+function upload() {
+    $nama_file = $_FILES['image-file']['name'];
+    $ukuran_file = $_FILES['image-file']['size'];
+    $tmp_name = $_FILES['image-file']['tmp_name'];
+
+    // Cek ekstensi file
+    $ekstensiValid = ['jpg', 'jpeg', 'png'];
+    $ekstensiFile = strtolower(pathinfo($nama_file, PATHINFO_EXTENSION));
+    if(!in_array($ekstensiFile, $ekstensiValid)) {
+        echo "<script>
+              alert('Ekstensi file yang diupload harus jpg/jpeg/png');
+          </script>";
+        return false;
+    }
+
+    // Cek ukuran file
+    if($ukuran_file >= 5000000) {
+        echo "<script>
+              alert('Ukuran file max 5MB');
+          </script>";
+        return false;
+    }
+
+    // Lolos pengecekan
+    $nama_file_baru = uniqid() . '.' . $ekstensiFile;
+    move_uploaded_file($tmp_name,'assets/images/produk/'. $nama_file_baru);
+    return $nama_file_baru;
 }
 
 function rupiah($angka){	

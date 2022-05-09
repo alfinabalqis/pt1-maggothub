@@ -46,7 +46,7 @@ if(isset($_POST["register"])){
       <div class="register mt-4">
           <form action="" method="post">
               <div class="form-group form-outline flex-fill mb-3">
-                <input type="names" class="form-control" id="nama" name="nama" required>
+                <input type="text" class="form-control" id="nama" name="nama" required>
                 <label class="form-label required" for="nama">Nama Lengkap</label>
               </div>
 
@@ -59,7 +59,8 @@ if(isset($_POST["register"])){
                 </div>
                 <div class="col-md-6">
                   <div class="form-group form-outline">
-                    <input type="tel" class="form-control" id="no-wa" name="no-wa" required>
+                    <input type="tel" class="form-control" id="no-wa" name="no-wa" 
+                    onkeypress="return onlyNumberKey(event)" required>
                     <label class="form-label required" for="no-wa">Nomor Whatsapp</label>
                   </div>
                 </div>

@@ -119,6 +119,15 @@ function hide(){
     hide.style.display = "none";
 }
 
+/*=====NUMBER ONLY FORM INPUT=====*/
+function onlyNumberKey(evt) {
+    // Only ASCII character in that range allowed
+    var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+    if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+        return false;
+    return true;
+}
+
 var swiper = new Swiper(".mySwiper", {
     slidesPerView: 4,
     spaceBetween: 20,

@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     include 'functions.php';
     $products = get_rows_from("products");
     
@@ -22,18 +23,143 @@
 <body>
     <!--Navbar-->
     <header>
-        <nav class="nav bd-grid">  
+    <nav class="nav bd-grid">  
             <img src="./assets/images/maggothub.svg" class="logo-maggothub" alt="">
             <div class="nav__logo">
                 <h1><a href="index.php"><span>Maggot</span>Hub</a></h1>
             </div>
 			<div class="nav__menu" id="nav-menu">
 				<ul class="nav__list">
-					<a href="index.php#home" class="nav__link"><li class="nav__item"><strong>Beranda</strong></li></a>
+					<a href="index.php" class="nav__link"><li class="nav__item"><strong>Beranda</strong></li></a>
 					<a href="produk.php" class="nav__link active"><li class="nav__item"><strong>Produk</strong></li></a>
 					<a href="index.php#tentang-bsf" class="nav__link"><li class="nav__item"><strong>Tentang BSF</strong></li></a>
 				</ul>
 			</div>
+            <?php if(isset($_SESSION["login"])): ?>
+                <div class="nav__menu" id="nav-menu">
+				<ul class="nav__list" style="display: flex;">
+                    <?php if($_SESSION["status"] === "penjual"): ?>
+                        <div class="notif-dropdown">
+                            <a class="nav_link dropbtn" href="#" onclick="showDropDown(); return false;">
+                                <img class="nav__img ic-notif" src="assets/images/ic-notif.png" alt="">
+                            </a>
+                            <div class="dropdown-content">
+                                <h1>Order Masuk</h1>
+                                <div class="dropdown-list">
+                                    <div class="d-inline-flex detail">
+                                        <img src="assets/images/produk/maggotkering.jpg" alt="">
+                                        <div class="notif">
+                                            <h2>SUPER MAGGOT Kering</h2>
+                                            <div class=" d-inline-flex">
+                                                <p>Jumlah: <span>2</span> pcs Total Harga: Rp <span>50.000</span></p>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-inline-flex detail">
+                                        <img src="assets/images/produk/maggotkering.jpg" alt="">
+                                        <div class="notif">
+                                            <h2>SUPER MAGGOT Kering</h2>
+                                            <div class=" d-inline-flex">
+                                                <p>Jumlah: <span>2</span> pcs Total Harga: Rp <span>50.000</span></p>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-inline-flex detail">
+                                        <img src="assets/images/produk/maggotkering.jpg" alt="">
+                                        <div class="notif">
+                                            <h2>SUPER MAGGOT Kering</h2>
+                                            <div class=" d-inline-flex">
+                                                <p>Jumlah: <span>2</span> pcs Total Harga: Rp <span>50.000</span></p>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-inline-flex detail">
+                                        <img src="assets/images/produk/maggotkering.jpg" alt="">
+                                        <div class="notif">
+                                            <h2>SUPER MAGGOT Kering</h2>
+                                            <div class=" d-inline-flex">
+                                                <p>Jumlah: <span>2</span> pcs Total Harga: Rp <span>50.000</span></p>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-inline-flex detail">
+                                        <img src="assets/images/produk/maggotkering.jpg" alt="">
+                                        <div class="notif">
+                                            <h2>SUPER MAGGOT Kering</h2>
+                                            <div class=" d-inline-flex">
+                                                <p>Jumlah: <span>2</span> pcs Total Harga: Rp <span>50.000</span></p>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-inline-flex detail">
+                                        <img src="assets/images/produk/maggotkering.jpg" alt="">
+                                        <div class="notif">
+                                            <h2>SUPER MAGGOT Kering</h2>
+                                            <div class=" d-inline-flex">
+                                                <p>Jumlah: <span>2</span> pcs Total Harga: Rp <span>50.000</span></p>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-inline-flex detail">
+                                        <img src="assets/images/produk/maggotkering.jpg" alt="">
+                                        <div class="notif">
+                                            <h2>SUPER MAGGOT Kering</h2>
+                                            <div class=" d-inline-flex">
+                                                <p>Jumlah: <span>2</span> pcs Total Harga: Rp <span>50.000</span></p>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-inline-flex detail">
+                                        <img src="assets/images/produk/maggotkering.jpg" alt="">
+                                        <div class="notif">
+                                            <h2>SUPER MAGGOT Kering</h2>
+                                            <div class=" d-inline-flex">
+                                                <p>Jumlah: <span>2</span> pcs Total Harga: Rp <span>50.000</span></p>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-inline-flex detail">
+                                        <img src="assets/images/produk/maggotkering.jpg" alt="">
+                                        <div class="notif">
+                                            <h2>SUPER MAGGOT Kering</h2>
+                                            <div class=" d-inline-flex">
+                                                <p>Jumlah: <span>2</span> pcs Total Harga: Rp <span>50.000</span></p>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="nav_link" href="upload.php">
+                            <img class="nav__img" src="assets/images/ic-upload.png" alt="">
+                        </a>
+                    <?php endif; ?>
+                    <div class="notif-dropdown">
+                        <a class="nav_link dropbtn" href="#" onclick="showProfileMenu(); return false;">
+                        <img class="nav__img" src="assets/images/ic-profil.png" alt="">
+                        </a>
+                        <div class="profile-menu dropdown-content">
+                            <div class="profile-img">
+                                <img src="assets/images/ic-profil.png">
+                                <span><?= strtok($_SESSION["nama"], " "); ?></span>
+                            </div>
+                            <hr>
+                            <a class="dropdown-item" href="logout.php">Keluar</a> 
+                        </div>
+                    </div>
+				</ul>
+			</div>
+            <?php endif; ?>
+            <?php if(!isset($_SESSION["login"])): ?>
             <div class="nav__menu" id="nav-menu">
 				<ul class="nav__list">
 					<a class="nav__link active" id="open-masuk" style="cursor: pointer;">
@@ -44,6 +170,7 @@
                     </a>
 				</ul>
 			</div>
+            <?php endif; ?>
             <button class="hamburger">
                 <span></span>
                 <span></span>

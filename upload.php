@@ -1,12 +1,24 @@
 <?php 
-    session_start();
-    
-    if(!isset($_SESSION["login"])){
-        header("Location: index.php");
-        exit;
-    }
+session_start();
 
-    include 'functions.php';
+if(!isset($_SESSION["login"]) || $_SESSION["status"] !== "penjual"){
+    header("Location: index.php");
+    exit;
+}
+
+require 'functions.php';
+if(isset($_POST["upload"])) {
+    // Cek apakah data berhasil ditambahkan
+    if(tambah($_POST) > 0) {
+        echo "<script>
+            alert('Produk baru berhasil ditambahkan');
+        </script>";
+    } else {
+        echo "<script>
+            alert('Produk baru gagal ditambahkan');
+        </script>";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,11 +30,12 @@
     <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <!-- Main -->
     <link rel="stylesheet" href="./assets/css/style.css?v=<?= time(); ?>">
 </head>
 <body>
     <header>
-        <nav class="nav bd-grid">  
+        <nav class="nav">  
             <img src="./assets/images/maggothub.svg" class="logo-maggothub" alt="">
             <div class="nav__logo">
                 <h1><a href="index.php"><span>Maggot</span>Hub</a></h1>
@@ -197,36 +210,42 @@
 
      <!--Upload Pembelian-->
      <div class="container" id="form-upload">
-        <div class="form-produk" style="display: flex">
-            <div>
-                <form>
+        <div class="form-produk">
+            <form style="display: flex;" action="" method="post" enctype="multipart/form-data">
+                <input type="hidden" id="id-users" name="id-users" value="<?= $_SESSION["id"]; ?>">
+                <div>
                     <div class="form-group">
-                        <label for="">Nama Produk</label>
-                        <input type="name" class="form-control" placeholder="Nama Produk" required="required">
+                        <label for="nama-produk">Nama Produk</label>
+                        <input type="text" class="form-control" placeholder="Nama Produk"
+                        id="nama-produk" name="nama-produk" required>
                     </div>
                     <div class="d-inline-flex half">
                         <div class="form-group">
-                            <label for="">Harga</label>
-                            <input type="name" class="form-control" placeholder="Harga Produk" required="required">
+                            <label for="harga">Harga</label>
+                            <input type="text" class="form-control" id="harga" name="harga"
+                                placeholder="Harga Produk" required
+                                onkeypress="return onlyNumberKey(event)" maxlength="11">
                         </div>
                         <div class="form-group">
-                            <label for="">Stok</label>
-                            <input type="name" class="form-control" placeholder="Stok Produk" required="required">
+                            <label for="stok">Stok</label>
+                            <input type="name" class="form-control" name="stok" id="stok"   
+                            placeholder="Jumlah Stok" onkeypress="return onlyNumberKey(event)"
+                            maxlength="11" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="">Deskripsi</label>
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                        <label for="deskripsi">Deskripsi</label>
+                        <textarea name="deskripsi" id="deskripsi" cols="30" rows="10" required></textarea>
                     </div>
-                </form>
-                <button type="submit">Upload Produk</button>
-            </div>
-            <div class="upload-gambar">
-                <label for="">Upload Gambar</label>
-                <div class="form-group file-area">
-                    <input type="file" name="images" id="images" required="required" multiple="multiple"/>
+                    <button type="submit" name="upload">Upload Produk</button>
                 </div>
-            </div>
+                <div class="upload-gambar">
+                    <label for="image-file">Upload Gambar</label>
+                    <div class="form-group file-area">
+                        <input type="file" name="image-file" id="image-file" required multiple="multiple"/>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
