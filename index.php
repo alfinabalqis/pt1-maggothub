@@ -1,7 +1,11 @@
 <?php 
-    include 'functions.php';
+    require 'functions.php';
     session_start();
-    $bests = get_rows_from("products WHERE is_best_seller = '1'");
+    $is_penjual = false;
+    if(isset($_SESSION['id-penjual'])) {
+        $is_penjual = true;
+    }
+    $bests = get_rows_from("products WHERE is_best_seller = 1");
 ?>
 
 <!DOCTYPE html>
@@ -30,15 +34,17 @@
             </div>
 			<div class="nav__menu" id="nav-menu">
 				<ul class="nav__list">
-					<a href="#home" class="nav__link active"><li class="nav__item"><strong>Beranda</strong></li></a>
+					<a href="index.php#home" class="nav__link active"><li class="nav__item"><strong>Beranda</strong></li></a>
 					<a href="produk.php" class="nav__link"><li class="nav__item"><strong>Produk</strong></li></a>
-					<a href="index.php#tentang-bsf" class="nav__link"><li class="nav__item"><strong>Tentang BSF</strong></li></a>
+                    <?php if(!$is_penjual): ?>
+					    <a href="index.php#tentang-bsf" class="nav__link"><li class="nav__item"><strong>Tentang BSF</strong></li></a>
+                    <?php endif; ?>
 				</ul>
 			</div>
             <?php if(isset($_SESSION["login"])): ?>
                 <div class="nav__menu" id="nav-menu">
 				<ul class="nav__list" style="display: flex;">
-                    <?php if($_SESSION["status"] === "penjual"): ?>
+                    <?php if($is_penjual): ?>
                         <div class="notif-dropdown">
                             <a class="nav_link dropbtn" href="#" onclick="showDropDown(); return false;">
                                 <img class="nav__img ic-notif" src="assets/images/ic-notif.png" alt="">
@@ -184,32 +190,37 @@
         <a href="index.php#home" class="nav__link"><strong>Beranda</strong></a>
 		<a href="produk.php" class="nav__link"><strong>Produk</strong></a>
         <a href="index.php#tentang-bsf" class="nav__link"><strong>Tentang BSF</strong></a>
-        <div class="nav__dropdown">
-            <a href="#">
-                <strong>Masuk</strong>
-                <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
-            </a>
-
-            <div class="nav__dropdown-collapse">
-                <div class="nav__dropdown-content">
-                    <a href="login-penjual.php" class="nav__dropdown-item nav__link">Sebagai Penjual</a>
-                    <a href="login-pembeli.php" class="nav__dropdown-item nav__link">Sebagai Pembeli</a>
+        <?php if(!isset($_SESSION["login"])): ?>
+            <div class="nav__dropdown">
+                <a href="#">
+                    <strong>Masuk</strong>
+                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                </a>
+    
+                <div class="nav__dropdown-collapse">
+                    <div class="nav__dropdown-content">
+                        <a href="login-penjual.php" class="nav__dropdown-item nav__link">Sebagai Penjual</a>
+                        <a href="login-pembeli.php" class="nav__dropdown-item nav__link">Sebagai Pembeli</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="nav__dropdown">
-            <a href="#">
-                <strong>Daftar</strong>
-                <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
-            </a>
-
-            <div class="nav__dropdown-collapse">
-                <div class="nav__dropdown-content">
-                    <a href="register-penjual.php" class="nav__dropdown-item nav__link">Sebagai Penjual</a>
-                    <a href="register-pembeli.php" class="nav__dropdown-item nav__link">Sebagai Pembeli</a>
+            <div class="nav__dropdown">
+                <a href="#">
+                    <strong>Daftar</strong>
+                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                </a>
+    
+                <div class="nav__dropdown-collapse">
+                    <div class="nav__dropdown-content">
+                        <a href="register-penjual.php" class="nav__dropdown-item nav__link">Sebagai Penjual</a>
+                        <a href="register-pembeli.php" class="nav__dropdown-item nav__link">Sebagai Pembeli</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php endif; ?>
+        <?php if(isset($_SESSION["login"])): ?>
+            <a href="logout.php" onclick="return confirm('Apakah anda yakin ingin keluar?');"><strong>Keluar</strong></a>
+        <?php endif; ?>
     </div>
 
     <!--Home-->
@@ -218,7 +229,13 @@
             <div class="home__desc judul">
                 <h2 class="home__subtitle">Mengenal Apa Itu <br> MaggotHub</h2>
                 <p class="home__text">MaggotHub adalah website yang khusus menjual berbagai macam produk olahan maggot BSF. Visi website ini adalah memperkenalkan produk olahan maggot BSF di Indonesia, membantu memasarkan produk-produk olahan maggot yang terintegrasi dalam satu platform, dan memudahkan pembeli untuk mencari produk olahan maggot BSF sesuai keinginan.</p>
-                <a href="#best-seller" class="home__btn"><button>Mulai Belanja</button></a>
+                <?php if($is_penjual): ?>
+                    <a href="produk.php" class="home__btn"><button>Kelola Produk Anda</button></a>
+                <?php endif; ?>
+
+                <?php if(!$is_penjual): ?>
+                    <a href="#best-seller" class="home__btn"><button>Mulai Belanja</button></a>
+                <?php endif; ?>
             </div>
             <div class="home__img fotosamping">
                 <img src="assets/images/maggothub.svg" alt="Logo MaggotHub" class="img-fluid animated">
@@ -226,6 +243,7 @@
 		</div>
 	</section>
 
+    <?php if(!$is_penjual): ?>
     <!--Tentang BSF-->
     <section class="tentang-bsf section" id="tentang-bsf">
         <h2 class="section-title">Tentang BSF<h2>
@@ -248,8 +266,8 @@
             <div class="swiper-slide best-product">
                 <img src="assets/images/produk/<?= $best["gambar"]; ?>" alt="" class="gambar">
                 <?php 
-                $status = "tersedia";
-                if($best["stok"] == 0) $status="habis";
+                    $status = "tersedia";
+                    if($best["stok"] == 0) $status="habis";
                 ?>
                 <img src="assets/images/<?= $status; ?>.svg" alt="Is Available" class="is-available">
                 <h3 class="nama-produk"><?= $best["nama"]; ?></h3>
@@ -264,7 +282,7 @@
                 <p>Harga</p>
                 <div class="price"><?= rupiah($best["harga"]); ?></div>
                 <div class="btn-lihat-produk">
-                    <a href="detail-produk.php?id=<?= $best["id"]; ?>">Lihat Produk</a>
+                    <a href="detail-produk.php?id-produk=<?= $best["id"]; ?>">Lihat Produk</a>
                 </div>
             </div>
             <?php endforeach; ?>
@@ -274,8 +292,9 @@
         <div class="swiper-pagination"></div>
     </div>
     <div class="btn-selengkapnya">
-    <a href="produk.php" class="btn-selengkapnya"><button>Lihat Selengkapnya</button></a>
+        <a href="produk.php" class="btn-selengkapnya"><button>Lihat Selengkapnya</button></a>
     </div>
+    <?php endif; ?>
 
     <!--Section modal login dan register-->
     <div class="modal-container" id="modal-masuk">
@@ -364,7 +383,7 @@
     <!--===== SCROLL REVEAL =====-->
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-        <!--===== MAIN JS =====-->
+    <!--===== MAIN JS =====-->
     <script src="assets/script/main.js?v=<?= time(); ?>"></script>
 
 </body>

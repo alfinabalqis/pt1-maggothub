@@ -1,8 +1,14 @@
 <?php 
     session_start();
-    include 'functions.php';
-    $products = get_rows_from("products");
-    
+    require 'functions.php';
+    $is_penjual = false;
+    if(isset($_SESSION['id-penjual'])) {
+        $id_penjual = $_SESSION['id-penjual'];
+        $products = get_rows_from("products WHERE id_penjual = $id_penjual");
+        $is_penjual = true;
+    } else
+        $products = get_rows_from("products");
+
     // Ketika tombol cari ditekan
     if(isset($_POST["cari"])) {
         $products = cari_produk($_POST["keyword"]);
@@ -32,13 +38,15 @@
 				<ul class="nav__list">
 					<a href="index.php" class="nav__link"><li class="nav__item"><strong>Beranda</strong></li></a>
 					<a href="produk.php" class="nav__link active"><li class="nav__item"><strong>Produk</strong></li></a>
-					<a href="index.php#tentang-bsf" class="nav__link"><li class="nav__item"><strong>Tentang BSF</strong></li></a>
+					<?php if(!$is_penjual): ?>
+					    <a href="index.php#tentang-bsf" class="nav__link"><li class="nav__item"><strong>Tentang BSF</strong></li></a>
+                    <?php endif; ?>
 				</ul>
 			</div>
             <?php if(isset($_SESSION["login"])): ?>
                 <div class="nav__menu" id="nav-menu">
 				<ul class="nav__list" style="display: flex;">
-                    <?php if($_SESSION["status"] === "penjual"): ?>
+                    <?php if($is_penjual): ?>
                         <div class="notif-dropdown">
                             <a class="nav_link dropbtn" href="#" onclick="showDropDown(); return false;">
                                 <img class="nav__img ic-notif" src="assets/images/ic-notif.png" alt="">
@@ -184,32 +192,37 @@
         <a href="index.php#home" class="nav__link"><strong>Beranda</strong></a>
 		<a href="produk.php" class="nav__link"><strong>Produk</strong></a>
         <a href="index.php#tentang-bsf" class="nav__link"><strong>Tentang BSF</strong></a>
-        <div class="nav__dropdown">
-            <a href="#">
-                <strong>Masuk</strong>
-                <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
-            </a>
-
-            <div class="nav__dropdown-collapse">
-                <div class="nav__dropdown-content">
-                    <a href="login-penjual.php" class="nav__dropdown-item nav__link">Sebagai Penjual</a>
-                    <a href="login-pembeli.php" class="nav__dropdown-item nav__link">Sebagai Pembeli</a>
+        <?php if(!isset($_SESSION["login"])): ?>
+            <div class="nav__dropdown">
+                <a href="#">
+                    <strong>Masuk</strong>
+                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                </a>
+    
+                <div class="nav__dropdown-collapse">
+                    <div class="nav__dropdown-content">
+                        <a href="login-penjual.php" class="nav__dropdown-item nav__link">Sebagai Penjual</a>
+                        <a href="login-pembeli.php" class="nav__dropdown-item nav__link">Sebagai Pembeli</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="nav__dropdown">
-            <a href="#">
-                <strong>Daftar</strong>
-                <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
-            </a>
-
-            <div class="nav__dropdown-collapse">
-                <div class="nav__dropdown-content">
-                    <a href="register-penjual.php" class="nav__dropdown-item nav__link">Sebagai Penjual</a>
-                    <a href="register-pembeli.php" class="nav__dropdown-item nav__link">Sebagai Pembeli</a>
+            <div class="nav__dropdown">
+                <a href="#">
+                    <strong>Daftar</strong>
+                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                </a>
+    
+                <div class="nav__dropdown-collapse">
+                    <div class="nav__dropdown-content">
+                        <a href="register-penjual.php" class="nav__dropdown-item nav__link">Sebagai Penjual</a>
+                        <a href="register-pembeli.php" class="nav__dropdown-item nav__link">Sebagai Pembeli</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php endif; ?>
+        <?php if(isset($_SESSION["login"])): ?>
+            <a href="logout.php" onclick="return confirm('Apakah anda yakin ingin keluar?');"><strong>Keluar</strong></a>
+        <?php endif; ?>
     </div>
 
     <!--Section modal login dan register-->
@@ -301,7 +314,7 @@
                     <p><strong>Harga</strong></p>
                     <div class="price"><?= rupiah($product["harga"]); ?></div>
                     <div class="btn-lihat-produk">
-                        <a href="detail-produk.php?id=<?= $product["id"]; ?>">Lihat Produk</a>
+                        <a href="detail-produk.php?id-produk=<?= $product["id"]; ?>">Lihat Produk</a>
                     </div>
                 </div>
                 <?php endforeach; ?>
@@ -354,9 +367,10 @@
     <script>
         var names = [];
         <?php 
-        $all_products = get_rows_from("products");
-        foreach($all_products as $product): ?>
-        names.push("<?= $product["nama"]; ?>");
+            $all_products = get_rows_from("products");
+            foreach($all_products as $product): 
+        ?>
+            names.push("<?= $product["nama"]; ?>");
         <?php endforeach; ?>
     </script>
     <script src="assets/script/searching.js?v=<?= time(); ?>"></script>

@@ -80,6 +80,20 @@ function login($data, $status) {
       if(password_verify($pasword, $row["password"])){
         $_SESSION = $row;
         $_SESSION["login"] = true;
+        $id_users = $row["id"];
+
+        // Id penjual
+        if($status === "penjual") {
+            $id_penjual = mysqli_fetch_row(mysqli_query($koneksi, 
+                "SELECT id FROM penjual WHERE id_users = $id_users"))[0];
+            $_SESSION["id-penjual"] = $id_penjual;
+        }
+        // Id pembeli
+        if($status === "pembeli") {
+            $id_pembeli = mysqli_fetch_row(mysqli_query($koneksi, 
+                "SELECT id FROM pembeli WHERE id_users = $id_users"))[0];
+            $_SESSION["id-pembeli"] = $id_pembeli;
+        }
         header("Location: index.php");
         exit;
       }
@@ -100,7 +114,7 @@ function tambah($data) {
     $deskripsi = htmlspecialchars($data["deskripsi"]);
 
     //upload gambar
-    $image_file = upload();
+    $image_file = upload_file();
     if(!$image_file) return false;
 
     mysqli_query($koneksi, "INSERT INTO product 
@@ -110,7 +124,7 @@ function tambah($data) {
     return mysqli_affected_rows($koneksi);
 }
 
-function upload() {
+function upload_file() {
     $nama_file = $_FILES['image-file']['name'];
     $ukuran_file = $_FILES['image-file']['size'];
     $tmp_name = $_FILES['image-file']['tmp_name'];

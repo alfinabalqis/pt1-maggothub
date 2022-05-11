@@ -62,7 +62,7 @@ body{
   line-height: 1.6;
 }
 
-h1,h2,p{
+h1,h2,h5,h6,p,pre{
   margin: 0;
 }
 
@@ -457,11 +457,11 @@ button:hover {
 .best-product .nama-produk{
   position: relative;
   left: 5%;
-   max-width: 17ch;
-   color:#000;
-   overflow: hidden;
-   white-space: nowrap; 
-   text-overflow: ellipsis;
+  max-width: 17ch;
+  color:#000;
+  overflow: hidden;
+  white-space: nowrap; 
+  text-overflow: ellipsis;
 }
 
 .best-product .stars{
@@ -1008,12 +1008,19 @@ small, .sandi{
   color: #fff;
 }
 
-/*=====DETAIL PRODUK=====*/
+/*===== DETAIL PRODUK =====*/
 
 .akun{
   margin-left: 4em;
 }
-
+.no-wrap{
+  overflow: hidden;
+  white-space: nowrap; 
+  text-overflow: ellipsis;
+}
+.form-control{
+  color: #000;
+}
 .akun p{
   font-weight: 700;
   font-size: 16px;
@@ -1024,37 +1031,49 @@ small, .sandi{
   color: var(--normal-color);
   font-weight: bold;
 }
-.d-inline-flex{
+.d-inline-flex {
   display: flex;
 }
 
 .container-detail {
-  padding: 0 5rem;
+  padding: 0 7rem;
 }
 .informasi-produk{
-  margin-top: 8em;
+  margin-top: 3em;
   justify-content: space-around;
   padding-bottom: 0px;
 }
 
+.informasi-produk .gambar {
+  height: 270px;
+}
+
+.informasi-produk .nama-toko {
+  color: var(--normal-color);
+}
+
 .deskripsi-produk {
-  margin: 0px 70px;
+  margin-top: 2rem;
   margin-bottom: 3rem;
 }
 
-.deskripsi-produk hr{
-  width: 65%;
-}
 
-.deskripsi-produk p{
-  font-size: 14px;   
+pre {
+  font-size: 16px;   
+  font-family: var(--body-font);
   text-align: justify;
-  color: #46505C;
+  color: #000;
   margin-top: 2em;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
 }
 
 .deskripsi-produk h1{
-  margin: 2em 0px 1em;
+  margin: 1em 0px 1em;
   font-size: 24px;
   font-weight: bold;
 }
@@ -1063,8 +1082,8 @@ small, .sandi{
   margin: 0px 30px;
 }
 
-.deskripsi-image h2{
-  margin: 20px 0px;
+.deskripsi-image .harga {
+  margin-top: 10px;
 }
 
 .row-desc > div{
@@ -1075,10 +1094,11 @@ small, .sandi{
   border: 1px solid #1F2A36;
   border-radius: 10px;
   padding: 30px 15px;
+  width: 300px;
 }
 
 .jumlah-produk h2{
-  margin: 0px 0px 10px;
+  margin: 0px 0px 0px;
   color: #1F2A36;
   font-size: 16px;
   text-align: center;
@@ -1095,7 +1115,8 @@ small, .sandi{
 }
 
 .subtotal button{
-  padding: 15px 105px;
+  padding: 10px 15px;
+  width: 100%;
   margin-top: 0px;
   margin-bottom: 20px;
   color: #1F2A36;
@@ -1106,7 +1127,8 @@ small, .sandi{
 }
 
 .jumlah-produk .button button{
-  padding: 15px 100px;
+  width: 100%;
+  padding: 10px 10px;
 }
 
 input#quantity{
@@ -1131,7 +1153,7 @@ button.chat{
 .form-pembelian{
   display: none;
   text-align: center;
-  border: 1px solid #E5E9F2;
+  border: 1px solid #7b7b7c;
   margin: 0px 150px 50px;
   border-radius: 12px;
   padding-top: 50px;

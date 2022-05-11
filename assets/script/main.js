@@ -7,21 +7,23 @@ const open_daftar = document.getElementById('open-daftar')
 const close_daftar = document.getElementById('close-daftar')
 const modal_daftar = document.getElementById('modal-daftar')
 
-open_masuk.addEventListener('click', () => {
-    modal_masuk.classList.add('show-modal')
-});
-
-close_masuk.addEventListener('click', () => {
-    modal_masuk.classList.remove('show-modal')
-});
-
-open_daftar.addEventListener('click', () => {
-    modal_daftar.classList.add('show-modal')
-});
-
-close_daftar.addEventListener('click', () => {
-    modal_daftar.classList.remove('show-modal')
-});
+if(!!open_masuk){
+    open_masuk.addEventListener('click', () => {
+        modal_masuk.classList.add('show-modal')
+    });
+    
+    close_masuk.addEventListener('click', () => {
+        modal_masuk.classList.remove('show-modal')
+    });
+    
+    open_daftar.addEventListener('click', () => {
+        modal_daftar.classList.add('show-modal')
+    });
+    
+    close_daftar.addEventListener('click', () => {
+        modal_daftar.classList.remove('show-modal')
+    });
+}
 
 /*===== SHOW MOBILE MENU =====*/ 
 const hamburger = document.querySelector('.hamburger');
@@ -48,7 +50,7 @@ navLink.forEach(n => n.addEventListener('click', function(){
 function showDropDown(){
     document.querySelector('.dropdown-content').classList.toggle('show');
 }
-/*===== SHOW NOTIF =====*/ 
+/*===== SHOW PROFILE-NOTIF =====*/ 
 function showProfileMenu(){
     document.querySelector('.profile-menu').classList.toggle('show');
 }
