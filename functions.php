@@ -153,6 +153,56 @@ function upload_file() {
     return $nama_file_baru;
 }
 
+function pesan_produk($data, $status_pembeli) {
+    global $koneksi;
+
+    $id_produk = $data["id-produk"];
+    $jumlah_produk = filter_input(INPUT_POST, 'jumlah-produk', FILTER_VALIDATE_INT);
+    $total_harga = filter_input(INPUT_POST, 'total-harga', FILTER_VALIDATE_INT);
+    $catatan = $data["catatan"];
+
+    // Menambahkan pesanan baru ke database
+    mysqli_query($koneksi, "INSERT INTO pesanan VALUES('', $id_produk, $jumlah_produk, $total_harga, '$catatan', '$status_pembeli')");
+    $id_pesanan = mysqli_insert_id($koneksi);
+
+    if($status_pembeli === "user") {
+        $id_user_pembeli = $data["id-user-pembeli"];
+
+        mysqli_query($koneksi, 
+                    "UPDATE pesanan_user 
+                    SET id_user_pembeli = $id_user_pembeli 
+                    WHERE id_pesanan = $id_pesanan");
+    }
+    if($status_pembeli === "nonuser") {
+        $nama_pembeli = $data["nama-pembeli"];
+        $no_wa_pembeli = $data["no-wa-pembeli"];
+        $alamat_pembeli = $data["alamat-pembeli"];
+
+        mysqli_query($koneksi, "INSERT INTO pembeli_nonuser VALUES('', '$nama_pembeli',
+                                '$no_wa_pembeli', '$alamat_pembeli')");
+        $id_pembeli_nonuser = mysqli_insert_id($koneksi);
+
+        mysqli_query($koneksi, 
+                    "UPDATE pesanan_nonuser 
+                    SET id_pembeli_nonuser = $id_pembeli_nonuser 
+                    WHERE id_pesanan = $id_pesanan");
+    }
+    return mysqli_affected_rows($koneksi);
+}
+
+function get_notif($id_penjual) {
+    global $koneksi;
+    $result = mysqli_query($koneksi, "SELECT products.id_penjual, products.id, products.nama, 
+                                    products.gambar, pesanan.* FROM pesanan 
+                                    LEFT JOIN products ON pesanan.id_product=products.id 
+                                    WHERE id_penjual = $id_penjual;");
+    $rows = [];
+    while($row = mysqli_fetch_assoc($result)){
+        $rows[] = $row;
+    }
+    return $rows;
+}
+
 function rupiah($angka){	
 	$hasil_rupiah = "Rp " . number_format($angka,0,',','.');
 	return $hasil_rupiah;

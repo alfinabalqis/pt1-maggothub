@@ -1,10 +1,9 @@
 <?php 
-    include 'functions.php';
+    require 'functions.php';
     session_start();
 
     // Tidak boleh masuk halaman ini sebagai penjual ataupun bypass via url
     $is_penjual = false;
-    
     if(isset($_SESSION['id-penjual'])) {
         $is_penjual = true;
     }
@@ -12,22 +11,21 @@
         header("Location: produk.php");
         exit;
     }
-
-    // Ketika User klik tombol "Pesan Sekarang" di form
-    if(isset($_POST["pesan"])){
-        var_dump($_POST);
-    }
     
     // Masuk halaman sebagai pembeli
     $is_pembeli = false;
+    $_POST["id-produk"] = $_GET["id-produk"];
     $nama = "";
     $no_wa = "";
     $alamat = "";
+    $status_pembeli = "nonuser";
     if(isset($_SESSION["id-pembeli"])) {
+        $_POST["id-user-pembeli"] = $_SESSION["id"];
         $is_pembeli = true;
         $nama = $_SESSION["nama"];
         $no_wa = $_SESSION["no_wa"];
         $alamat = $_SESSION["alamat"];
+        $status_pembeli = "user";
     }
 
     $product_id = $_GET["id-produk"];
@@ -48,6 +46,19 @@
     // No Wa penjual
     $no_wa_penjual = mysqli_fetch_row(mysqli_query($koneksi, "SELECT no_wa 
                     FROM users WHERE id = $id_user_penjual"))[0];
+
+    // Ketika User klik tombol "Pesan Sekarang" di form
+    if(isset($_POST["pesan"])){
+        if(pesan_produk($_POST,$status_pembeli) > 0){
+            echo "<script>
+              alert('Produk berhasil dipesan');
+          </script>";
+        } else {
+            echo "<script>
+              alert('Produk gagal dipesan');
+          </script>";
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -223,19 +234,19 @@
                     <form action="" method="post" class="mb-2">
                         <div class="form-group form-outline flex-fill mb-2">
                             <input type="text" class="form-control" id="nama-pembeli"
-                            name="nama-pembeli" required <?php if($is_pembeli) echo "disabled"; ?> 
-                            value="<?= $nama; ?>">
+                            name="nama-pembeli" required value="<?= $nama; ?>">
                             <label class="form-label required" for="nama-pembeli">Nama Lengkap</label>
                         </div>
                         <div class="form-group form-outline flex-fill mb-2">
-                            <input type="tel" class="form-control" id="no-wa" name="no-wa" required
-                            <?php if($is_pembeli) echo "disabled"; ?> value="<?= $no_wa; ?>">
-                            <label class="form-label required" for="no-wa">No Whatsapp</label>
+                            <input type="tel" class="form-control" id="no-wa-pembeli"
+                            name="no-wa-pembeli" required
+                             value="<?= $no_wa; ?>">
+                            <label class="form-label required" for="no-wa-pembeli">No Whatsapp</label>
                         </div>
                         <div class="form-group form-outline flex-fill mb-2">
-                            <input type="text" class="form-control no-wrap" id="alamat" name="alamat"
-                            required <?php if($is_pembeli) echo "disabled"; ?> value="<?= $alamat; ?>">
-                            <label class="form-label required" for="alamat">Alamat</label>
+                            <input type="text" class="form-control no-wrap" id="alamat-pembeli"
+                            name="alamat-pembeli" required value="<?= $alamat; ?>">
+                            <label class="form-label required" for="alamat-pembeli">Alamat</label>
                         </div>
                         <div class="form-group form-outline flex-fill mb-2">
                             <input type="text" class="form-control no-wrap" id="nama-produk" name="nama-produk" value="<?= $product["nama"]; ?>" disabled>
@@ -264,8 +275,8 @@
                             <input type="hidden" name="total-harga" id="total-harga" value="<?= $harga ?>">
                         </div> 
                         <div class="form-outline">
-                            <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
-                            <label class="form-label" for="textAreaExample">Catatan</label>
+                            <textarea class="form-control" id="catatan" name="catatan" rows="4"></textarea>
+                            <label class="form-label" for="catatan">Catatan</label>
                         </div>
                             <button type="submit" name="pesan" class="btn btn-primary">Pesan Sekarang</button>
                     </form>  
