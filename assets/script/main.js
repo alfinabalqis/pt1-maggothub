@@ -133,8 +133,8 @@ function onlyNumberKey(evt) {
 var swiper = new Swiper(".mySwiper", {
     slidesPerView: 4,
     spaceBetween: 20,
-    maxSlidesPerGroup: 3,
-    loop: true,
+    maxSlidesPerGroup: 4,
+    loop: false,
     pagination: {
       el: ".swiper-pagination",
       clickable: true,

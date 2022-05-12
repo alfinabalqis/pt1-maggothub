@@ -54,7 +54,7 @@ CREATE TABLE `pembeli_nonuser` (
   `no_wa` varchar(20) NOT NULL,
   `alamat` mediumtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,6 +63,7 @@ CREATE TABLE `pembeli_nonuser` (
 
 LOCK TABLES `pembeli_nonuser` WRITE;
 /*!40000 ALTER TABLE `pembeli_nonuser` DISABLE KEYS */;
+INSERT INTO `pembeli_nonuser` VALUES (1,'Irham Tri Ahmadi','0881023409290','Jalan Sukaasih Raya Atas blok Sekepeer No 15A Bandung');
 /*!40000 ALTER TABLE `pembeli_nonuser` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,7 +111,7 @@ CREATE TABLE `pesanan` (
   PRIMARY KEY (`id`),
   KEY `id_produk` (`id_product`),
   CONSTRAINT `pesanan_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -119,6 +120,7 @@ CREATE TABLE `pesanan` (
 
 LOCK TABLES `pesanan` WRITE;
 /*!40000 ALTER TABLE `pesanan` DISABLE KEYS */;
+INSERT INTO `pesanan` VALUES (9,15,2,129998,'Deket masjid rumahnya','user'),(11,16,2,198000,'Masuk Gang rumahnya','nonuser');
 /*!40000 ALTER TABLE `pesanan` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -163,9 +165,8 @@ CREATE TABLE `pesanan_nonuser` (
   PRIMARY KEY (`id`),
   KEY `fk_pesanannonusr_pesanan` (`id_pesanan`),
   KEY `fk_pesanannonusr_pembelinonusr` (`id_pembeli_nonuser`),
-  CONSTRAINT `fk_pesanannonusr_pembelinonusr` FOREIGN KEY (`id_pembeli_nonuser`) REFERENCES `pembeli_nonuser` (`id`),
   CONSTRAINT `fk_pesanannonusr_pesanan` FOREIGN KEY (`id_pesanan`) REFERENCES `pesanan` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -174,6 +175,7 @@ CREATE TABLE `pesanan_nonuser` (
 
 LOCK TABLES `pesanan_nonuser` WRITE;
 /*!40000 ALTER TABLE `pesanan_nonuser` DISABLE KEYS */;
+INSERT INTO `pesanan_nonuser` VALUES (3,11,1);
 /*!40000 ALTER TABLE `pesanan_nonuser` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -187,13 +189,12 @@ DROP TABLE IF EXISTS `pesanan_user`;
 CREATE TABLE `pesanan_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_pesanan` int(11) NOT NULL,
-  `id_pembeli` int(11) NOT NULL,
+  `id_user_pembeli` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_pesananusr_pesanan` (`id_pesanan`),
-  KEY `fk_pesananusr_pembeli` (`id_pembeli`),
-  CONSTRAINT `fk_pesananusr_pembeli` FOREIGN KEY (`id_pembeli`) REFERENCES `pembeli` (`id`),
+  KEY `fk_pesananusr_usrpembeli` (`id_user_pembeli`),
   CONSTRAINT `fk_pesananusr_pesanan` FOREIGN KEY (`id_pesanan`) REFERENCES `pesanan` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -202,6 +203,7 @@ CREATE TABLE `pesanan_user` (
 
 LOCK TABLES `pesanan_user` WRITE;
 /*!40000 ALTER TABLE `pesanan_user` DISABLE KEYS */;
+INSERT INTO `pesanan_user` VALUES (8,9,25);
 /*!40000 ALTER TABLE `pesanan_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -302,4 +304,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-11 13:57:48
+-- Dump completed on 2022-05-11 17:23:13

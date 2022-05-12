@@ -278,7 +278,7 @@
                             <textarea class="form-control" id="catatan" name="catatan" rows="4"></textarea>
                             <label class="form-label" for="catatan">Catatan</label>
                         </div>
-                            <button type="submit" name="pesan" class="btn btn-primary">Pesan Sekarang</button>
+                            <button type="submit" name="pesan" class="btn btn-login">Pesan Sekarang</button>
                     </form>  
                 </div>
             </div>

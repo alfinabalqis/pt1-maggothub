@@ -3,10 +3,11 @@
     require 'functions.php';
     $is_penjual = false;
     if(isset($_SESSION['id-penjual'])) {
+        $is_penjual = true;
         $id_penjual = $_SESSION['id-penjual'];
+        
         $products = get_rows_from("products WHERE id_penjual = $id_penjual");
         $notifs = get_notif($id_penjual);
-        $is_penjual = true;
     } else
         $products = get_rows_from("products");
 
@@ -61,7 +62,7 @@
                                 <?php if(!empty($notifs)): ?>
                                 <h1>Order Masuk</h1>
                                 <?php endif; ?>
-                                
+
                                 <?php foreach ($notifs as $notif): ?>
                                 <div class="dropdown-list">
                                     <div class="d-inline-flex detail">
@@ -218,7 +219,7 @@
         <!--List Products-->
         <?php if(empty($products)): ?>
             <div class="not-found">
-                <img src="assets/images/notfound.svg" alt="Not Found">
+                <img src="assets/images/not-found.svg" alt="Not Found">
                 <h2>Oops, produk tidak ditemukan</h2>
                 <p>Coba kata kunci lain atau cek produk lain</p> 
             </div>
