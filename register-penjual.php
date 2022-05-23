@@ -24,14 +24,12 @@ if(isset($_POST["register"])){
     <link rel="shortcut icon" href="assets/img/icon.png" type="image/x-icon">
     <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon">
     
-    <!--Bootstrap-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="./assets/css/external/boxicon.min.css">
+    <link rel="stylesheet" href="./assets/css/external/font-awesome.css"/>
+    <link rel="stylesheet" href="./assets/css/external/bootsrap.min.css"/>
     <!-- MDB -->
     <link rel="stylesheet" href="./assets/css/mdb/mdb.min.css?v=<?= time(); ?>" />
-    
-    <link rel="stylesheet" href="./assets/css/style.css?v=<?= time(); ?>">    
+    <link rel="stylesheet" href="./assets/css/style.css?v=<?= time(); ?>">
 </head>
 <body>
 
@@ -55,6 +53,21 @@ if(isset($_POST["register"])){
                 <input type="email" class="form-control" id="email" name="email" required>
                 <label class="form-label required" for="email">Email</label>
               </div>
+              
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group form-outline">
+                    <input type="password" class="form-control" id="password1" name="password1"/>
+                    <label class="form-label required" for="password1">Password</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group form-outline">
+                    <input type="password" class="form-control" id="password2" name="password2" />
+                    <label class="form-label required" for="password2">Ulangi Password</label>
+                  </div>
+                </div>
+              </div>
 
               <div class="row">
                 <div class="col-md-6">
@@ -71,25 +84,15 @@ if(isset($_POST["register"])){
                   </div>
                 </div>
               </div>
-    
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group form-outline">
-                    <input type="password" class="form-control" id="password1" name="password1"/>
-                    <label class="form-label required" for="password1">Password</label>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group form-outline">
-                    <input type="password" class="form-control" id="password2" name="password2" />
-                    <label class="form-label required" for="password2">Ulangi Password</label>
-                  </div>
-                </div>
-              </div>
 
               <div class="form-group form-outline flex-fill mb-3">
-                  <textarea type="text" class="form-control" id="alamat" name="alamat" rows="3" required></textarea>
-                  <label class="form-label required" for="alamat">Alamat Lengkap</label>
+                <input type="text" class="form-control" id="alamat" name="alamat" required>
+                <label class="form-label required" for="alamat">Alamat Toko</label>
+              </div>
+              
+              <div class="form-group form-outline flex-fill mb-3">
+                <input type="text" class="form-control" id="kota" name="kota" required>
+                <label class="form-label required" for="kota">Kota/Kabupaten</label>
               </div>
               
               <div class="btn-register">

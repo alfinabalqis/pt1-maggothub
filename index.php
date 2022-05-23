@@ -21,6 +21,9 @@
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <!--MDB CSS-->
+    <link rel="stylesheet" href="assets/css/mdb/mdb.min.css?v=<?= time(); ?>">
+    <!--Main CSS-->
     <link rel="stylesheet" href="./assets/css/style.css?v=<?= time(); ?>">
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
@@ -54,27 +57,26 @@
                             <div class="dropdown-content">
                                 <?php if(empty($notifs)): ?>
                                     <h4>Tidak ada notifikasi masuk</h4>
-                                    <img src="assets/images/notfound.svg" alt="Not Found" class="no-notif">
-                                <?php endif; ?>
-
-                                <?php if(!empty($notifs)): ?>
+                                    <img src="assets/images/not-found.svg" alt="Not Found" class="no-notif">
+                                <?php else: ?>
                                 <h1>Order Masuk</h1>
                                 <?php endif; ?>
                                 
-                                <?php foreach ($notifs as $notif): ?>
                                 <div class="dropdown-list">
-                                    <div class="d-inline-flex detail">
+                                <?php foreach ($notifs as $notif): ?>
+                                    <div class="d-inline-flex detail" data-mdb-toggle="modal" data-mdb-target="#notifDetail">
                                         <img src="assets/images/produk/<?= $notif["gambar"]; ?>" alt="">
                                         <div class="notif">
                                             <h2 class="no-wrap"><?= $notif["nama"]; ?></h2>
-                                            <div class=" d-inline-flex">
-                                                <p>Jumlah: <span><?= $notif["jumlah_produk"]; ?></span> pcs Total Harga:<span><?= rupiah($notif["total_harga"]); ?></span></p>
+                                            <div class="d-flex justify-content-start">
+                                                <p>Jumlah: <span><?= $notif["jumlah_produk"]; ?></span> pcs</p>
+                                                <p>Total Harga:<span><?= rupiah($notif["total_harga"]); ?></span></p>
                                                 <p></p>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 <?php endforeach; ?>
+                                </div>
                             </div>
                         </div>
                         <a class="nav_link" href="upload.php">
@@ -100,10 +102,11 @@
             <?php if(!isset($_SESSION["login"])): ?>
             <div class="nav__menu" id="nav-menu">
 				<ul class="nav__list">
-					<a class="nav__link active" id="open-masuk" style="cursor: pointer;">
+					<a class="nav__link active" style="cursor: pointer;"
+                    data-mdb-toggle="modal" data-mdb-target="#masukModal">
                         <li class="nav__item">Masuk</li>
                     </a>
-					<a class="nav__link" id="open-daftar"> 
+					<a class="nav__link" id="open-daftar" data-mdb-toggle="modal" data-mdb-target="#daftarModal"> 
                         <li class="nav__item"><button class="daftar">Daftar</button></li>
                     </a>
 				</ul>
@@ -155,6 +158,79 @@
         <?php endif; ?>
     </div>
 
+    <!-- Detail Notif Modal -->
+    <!-- <div class="modal fade" id="notifDetail" tabindex="-1" aria-labelledby="notifDetailLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content text-center">
+                <div class="d-flex justify-content-end me-3">
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <h5 class="modal-title" id="notifDetailLabel">Detail Pesanan</h5>
+                <div class="modal-body detail-notif-content">
+                    <img src="assets/images/produk/" alt="">
+                    <div class="notif-info">
+                        <h6></h6>
+                        <p>Jumlah: <span></span> pcs Total Harga:<span></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- Masuk Modal -->
+    <div class="modal fade" id="masukModal" tabindex="-1" aria-labelledby="masukModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-container">
+            <div class="modal-content text-center">
+                <div class="d-inline-flex justify-content-end me-3">
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <h1 class="mb-0">Masuk</h1>
+                <h2>Pilih Masuk sebagai Penjual atau Pembeli</h2>
+                <div class="d-flex flex-row card">
+                    <a href="login-penjual.php" class="kiri">
+                        <div>
+                            <img src="assets/images/ic-penjual.svg" alt="">
+                            <h1>Penjual</h1>
+                        </div>
+                    </a>
+
+                    <a href="login-pembeli.php">                        
+                        <div style="cursor: pointer;">
+                            <img src="assets/images/ic-pembeli.svg" alt="">
+                            <h1>Pembeli</h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Daftar Modal -->
+    <div class="modal fade" id="daftarModal" tabindex="-1" aria-labelledby="daftarModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-container">
+            <div class="modal-content text-center">
+                <div class="d-inline-flex justify-content-end me-3">
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <h1 class="mb-0">Daftar</h1>
+                <h2>Pilih Daftar sebagai Penjual atau Pembeli</h2>
+                <div class="d-flex flex-row card">
+                    <a href="register-penjual.php" class="kiri">
+                        <div>
+                            <img src="assets/images/ic-penjual.svg" alt="">
+                            <h1>Penjual</h1>
+                        </div>
+                    </a>
+
+                    <a href="register-pembeli.php">                        
+                        <div style="cursor: pointer;">
+                            <img src="assets/images/ic-pembeli.svg" alt="">
+                            <h1>Pembeli</h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!--Home-->
 	<section class="home <?php if($is_penjual) echo " vh-100"; ?>" id="home">
 		<div class="home__container isi">
@@ -221,59 +297,12 @@
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
+        <!-- <div class="swiper-pagination"></div> -->
     </div>
     <div class="btn-selengkapnya">
         <a href="produk.php" class="btn-selengkapnya"><button>Lihat Selengkapnya</button></a>
     </div>
     <?php endif; ?>
-
-    <!--Section modal login dan register-->
-    <div class="modal-container" id="modal-masuk">
-        <div class="modal">
-            <h5 class="modal-close" id="close-masuk">&#10005;</h5>
-            <h1>Masuk</h1>
-            <h2>Pilih Daftar sebagai Penjual atau Pembeli</h2>
-            <div class="card">
-                <a href="login-penjual.php" class="kiri">
-                    <div>
-                        <img src="assets/images/ic-penjual.svg" alt="">
-                        <h1>Penjual</h1>
-                    </div>
-                </a>
-
-                <a href="login-pembeli.php">                        
-                    <div style="cursor: pointer;">
-                        <img src="assets/images/ic-pembeli.svg" alt="">
-                        <h1>Pembeli</h1>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-container" id="modal-daftar">
-        <div class="modal">
-            <h5 class="modal-close" id="close-daftar">&#10005;</h5>
-            <h1><strong>Daftar</strong></h1>
-            <h2>Pilih Daftar sebagai Penjual atau Pembeli</h2>
-            <div class="card">
-                <a href="register-penjual.php" class="kiri">                        
-                <div>
-                    <img src="assets/images/ic-penjual.svg" alt="">
-                    <h1>Penjual</h1>
-                </div>
-                </a>
-
-                <a href="register-pembeli.php">                        
-                <div style="cursor: pointer;">
-                    <img src="assets/images/ic-pembeli.svg" alt="">
-                    <h1>Pembeli</h1>
-                </div>
-                </a>
-            </div>
-        </div>
-    </div>
 
     <!--Footer-->
     <footer>
@@ -315,6 +344,8 @@
     <!--===== SCROLL REVEAL =====-->
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+     <!--===== MDB JS =====-->
+     <script type="text/javascript" src="assets/script/mdb.min.js?v=<?= time(); ?>"></script>
     <!--===== MAIN JS =====-->
     <script src="assets/script/main.js?v=<?= time(); ?>"></script>
 

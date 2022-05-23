@@ -21,13 +21,14 @@ function register($data, $status) {
     $pass = mysqli_real_escape_string($koneksi, $data["password1"]);
     $pass2 = mysqli_real_escape_string($koneksi, $data["password2"]);
     $alamat = $data["alamat"];
+    $kota = $data["kota"];
 
     // Cek email sudah ada atau belum
     $check_email = mysqli_query($koneksi, "SELECT * FROM users 
                                 WHERE email = '$email' AND status = '$status'");
     if(mysqli_fetch_assoc($check_email)) {
         echo "<script>
-            alert('Email yang anda masukkan sudah terdaftar!');
+            alert('Email sudah terdaftar!');
             </script>";    
         return 0;
     }
@@ -54,11 +55,14 @@ function register($data, $status) {
 
     // Menambahkan user baru ke database
     mysqli_query($koneksi, "INSERT INTO users VALUES('', 
-                '$nama', '$no_wa', '$email', '$pass', '$alamat', '$status')");
+                '$nama', '$no_wa', '$email', '$pass', '$status')");
+    $last_id = mysqli_insert_id($koneksi);
+    mysqli_query($koneksi, 
+                    "UPDATE alamat 
+                    SET alamat = '$alamat', kota = '$kota' 
+                    WHERE id_users = $last_id");
     if($status === "penjual") {
         $nama_toko = $data["nama-toko"];
-        $last_id = mysqli_insert_id($koneksi);
-
         mysqli_query($koneksi, 
                     "UPDATE penjual 
                     SET nama_toko = '$nama_toko' 
@@ -81,6 +85,12 @@ function login($data, $status) {
         $_SESSION = $row;
         $_SESSION["login"] = true;
         $id_users = $row["id"];
+
+        // Data alamat
+        $_SESSION["alamat"] = mysqli_fetch_row(mysqli_query($koneksi, 
+                            "SELECT alamat FROM alamat WHERE id_users = $id_users"))[0];
+        $_SESSION["kota"] = mysqli_fetch_row(mysqli_query($koneksi, 
+                            "SELECT kota FROM alamat WHERE id_users = $id_users"))[0];
 
         // Id penjual
         if($status === "penjual") {
@@ -117,9 +127,9 @@ function tambah($data) {
     $image_file = upload_file();
     if(!$image_file) return false;
 
-    mysqli_query($koneksi, "INSERT INTO product 
+    mysqli_query($koneksi, "INSERT INTO products
                 VALUES ('', $id_penjual, '$nama_produk', $harga, $stok, 
-                '$deskripsi', '$image_file')");
+                '$deskripsi', '$image_file', 0)");
     
     return mysqli_affected_rows($koneksi);
 }
@@ -192,7 +202,21 @@ function pesan_produk($data, $status_pembeli) {
 
 function get_notif($id_penjual) {
     global $koneksi;
-    $result = mysqli_query($koneksi, "SELECT products.id_penjual, products.id, products.nama, 
+    $result = mysqli_query($koneksi, "SELECT products.id_penjual, 
+                                    products.id, products.nama, 
+                                    products.gambar, pesanan.* FROM pesanan 
+                                    LEFT JOIN products ON pesanan.id_product=products.id 
+                                    WHERE id_penjual = $id_penjual;");
+    $rows = [];
+    while($row = mysqli_fetch_assoc($result)){
+        $rows[] = $row;
+    }
+    return $rows;
+}
+function get_detail_notif($id_penjual) {
+    global $koneksi;
+    $result = mysqli_query($koneksi, "SELECT products.id_penjual, 
+                                    products.id, products.nama, 
                                     products.gambar, pesanan.* FROM pesanan 
                                     LEFT JOIN products ON pesanan.id_product=products.id 
                                     WHERE id_penjual = $id_penjual;");
@@ -206,10 +230,6 @@ function get_notif($id_penjual) {
 function rupiah($angka){	
 	$hasil_rupiah = "Rp " . number_format($angka,0,',','.');
 	return $hasil_rupiah;
-}
-
-function cari_produk($keyword){
-    return get_rows_from("products WHERE nama LIKE '%$keyword%'");
 }
 
 ?>

@@ -391,7 +391,8 @@ button:hover {
 
 /* ===== Tentang BSF =====*/
 .tentang-bsf {
-  padding: 5rem 0;
+  padding: 5rem 0 0;
+  margin-bottom: 5rem;
 }
 .tentang__img{
   padding: 50px;
@@ -424,18 +425,19 @@ button:hover {
 
 /* Best Seller */
 .best-container{
-  max-width: 90%;
+  width: 90%;
+  margin-top: 4em;
 }
 .best-container .best-wrapper{
-  padding: 10px;
+  margin: 20px 0px;
+  padding: 0px 0px;
 }
 
 .best-container .best-wrapper .best-product{
   position: relative;
   text-align: center;
   border-radius: 15px;
-  padding:3rem 2rem;
-  margin: 3rem 2rem;
+  padding: 2rem;
   background: #fff;
   box-shadow: 0 .5rem 1rem rgba(0,0,0,.4);
   outline: .1rem solid #ccc;
@@ -465,12 +467,14 @@ button:hover {
 
 .best-product .nama-produk{
   position: relative;
-  left: 5%;
-  max-width: 17ch;
+  left: 0% !important;
+  max-width: 100%;
+  /* margin: 20px 40px 0px !important; */
   color:#000;
   overflow: hidden;
   white-space: nowrap; 
   text-overflow: ellipsis;
+  margin: 0;
 }
 
 .best-product .stars{
@@ -490,27 +494,26 @@ button:hover {
 }
 
 .best-product .price{
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color:#000;
 }
 
 .best-product .btn-lihat-produk{
   display: flex;
-  gap:1.5rem;
   flex-wrap: nowrap;
   margin-top: 1rem;
 }
 
 .best-product .btn-lihat-produk a{
   border-radius: 10px;
-  color:#9E5726;
-  border:.1rem solid #9E5726;
-  background: #9E5726;
+  color:var(--normal-color);
+  border:.1rem solid var(--normal-color);
+  background: var(--normal-color);
   color:#fff;
 }
 
 .best-product .btn-lihat-produk a:hover{
-  background: #75350a;
+  background: var(--dark-color);
 }
 
 .swiper-button-next:after, .swiper-button-prev:after{
@@ -522,6 +525,7 @@ button:hover {
   width: 26px;
   border-radius: 25px;
   background: var(--normal-color);
+  display: none;
 }
 
 .btn-selengkapnya{
@@ -665,6 +669,7 @@ button:hover {
    white-space: nowrap; 
    text-overflow: ellipsis;
 }
+
 
 .stars{
   margin-bottom: 1rem;
@@ -820,34 +825,36 @@ li.list-name {
   letter-spacing: 0.135rem;
 }
 
-/*Modal*/
+/* Modal Masuk dan Register */
 .modal-container{
-  background-color: rgba(0, 0, 0, 0.3);
+  /* background-color: rgba(0, 0, 0, 0.3); */
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 100vw;
   display: flex;
-  top: 0;
+  width: auto;
+  /* top: 0;
   left: 0;
   position: fixed;
   opacity: 0;
   pointer-events: none;
-  bottom: 0;
+  bottom: 0; */
   transition: opacity 0.3s ease;
 }
-.modal-container .modal {
+.modal-content {
+  width: auto;
+}
+.modal-container .modal-wrapper {
   background-color: #fff;
   border-radius: 30px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   max-width: 100%;
   text-align: center;
 }
-.modal-container.show-modal{
+/* .modal-container.show-modal{
   pointer-events: auto;
   z-index: var(--z-fixed);
   opacity: 1;
-}
+} */
 
 .card{
   display: flex;
@@ -888,13 +895,13 @@ li.list-name {
   color: #fff;
 }
 
-.modal-close{
+/* .modal-close{
   float: right;
   margin-top: 2%;
   margin-right: 3%;
   cursor: pointer;
   padding:0;
-}
+} */
 
 /*Login Register*/
 .back2home{
@@ -1045,7 +1052,7 @@ small, .sandi{
   padding: 0 7rem;
 }
 .informasi-produk{
-  margin-top: 3em;
+  margin-top: 8em;
   justify-content: space-around;
   padding-bottom: 0px;
 }
@@ -1056,6 +1063,10 @@ small, .sandi{
 
 .informasi-produk .nama-toko {
   color: var(--normal-color);
+}
+
+.informasi-produk .lokasi-toko {
+
 }
 
 .deskripsi-produk {
@@ -1169,7 +1180,7 @@ button.chat{
 .form-produk{
   box-shadow: 0px 16px 64px rgba(0, 7, 46, 0.04);
   border-radius: 15px;
-  padding: 50px 100px 80px;
+  padding: 120px 100px 80px;
 }
 
 .form-produk h2{
@@ -1231,6 +1242,89 @@ input:focus, textarea:focus {
   cursor: pointer;
   background: #E9DFDF;
 }
+.drop-container {
+  background: #fff;
+  padding: 1.5rem;
+  width: 450px;
+  display: inline-block;
+  border-radius: 20px;
+  box-shadow: 0 0 40px 15px rgba(0, 0, 0, 0.05);
+  margin: 50px 100px;
+  }
+  .drop {
+  border-radius: 10px;
+  border: 3px dashed #aaaaaa;
+  display: grid;
+  width: 100%;
+  place-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  }
+
+  .upload-active {
+  border: 3px solid #4b4b4b;
+  background: #edccff;
+  }
+
+  .drop .icon {
+  font-size: 60px;
+  color: var(--normal-color);
+  }
+  .drop .text {
+  text-align: center;
+  font-weight: 500;
+  color: #443f46;
+  margin-top: 1rem;
+  }
+
+  .progress {
+  background: var(--normal-color);
+  width: 0%;
+  height: 20px;
+  display: block;
+  border-radius: 10px;
+  transition: all 0.2s;
+  }
+  .drop label {
+  font-size: 0.8em;
+  text-align: center;
+  border-radius: 10px;
+  border: 0;
+  margin-top: 20px;
+  padding: 15px 50px;
+  font-family: 'Poppins','sans-serif';
+  transition: all .6s ease-in-out;
+  background: var(--normal-color);
+  color: #fff;
+  cursor: pointer;
+  }
+  .drop label:hover {
+    background-color: var(--dark-color);
+  }
+
+  .file-input {
+  display: none;
+  }
+
+  .line {
+  width: 80px;
+  height: 1px;
+  background: #949494;
+  }
+
+  .or-con {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem;
+  }
+
+  .or {
+  margin: 0 1rem;
+  font-weight: 500;
+  color: #443f46;
+  }
 
 /* NOTIF STYLING */
 .dropdown-content {
@@ -1269,12 +1363,14 @@ input:focus, textarea:focus {
   font-weight: bold;
 }
 
-.dropdown-list {
+.dropdown-list{
   max-height: 60vh;
+  width: 30vw;
   overflow-y: auto;
 }
 
 .dropdown-list .detail{
+  cursor: pointer;
   max-width: 400px;
   padding-right: 10px;
   padding-left: 10px;
@@ -1334,6 +1430,10 @@ input:focus, textarea:focus {
   rotate(45deg);
 }
 
+/* ===== Modal Detail Notif ===== */
+.detail-notif-content img{
+  height: 150px;
+}
 @media only screen and (max-width: 768px){
   body{
     overflow-x: hidden;

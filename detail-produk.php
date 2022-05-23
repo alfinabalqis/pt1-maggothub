@@ -39,9 +39,11 @@
     $id_user_penjual = mysqli_fetch_row(mysqli_query($koneksi, 
     "SELECT id_users FROM penjual WHERE id = $id_penjual"))[0];
 
-    // Nama Toko penjual
+    // Data Toko penjual
     $nama_toko = mysqli_fetch_row(mysqli_query($koneksi, "SELECT nama_toko 
                 FROM penjual WHERE id = $id_penjual"))[0];
+    $kota_toko = mysqli_fetch_row(mysqli_query($koneksi, "SELECT kota 
+                FROM alamat WHERE id_users = $id_user_penjual"))[0];
 
     // No Wa penjual
     $no_wa_penjual = mysqli_fetch_row(mysqli_query($koneksi, "SELECT no_wa 
@@ -166,9 +168,9 @@
                 <img class="gambar" src="assets/images/produk/<?= $product["gambar"]; ?>" alt="Gambar Produk">
                 <div style="margin-top: 10px;">
                     <h2 class="nama-toko"><?= $nama_toko ?></h2>
-                    <div class="d-inline-flex">
+                    <div class="d-inline-flex lokasi-toko no-wrap">
                         <img src="assets/images/ic-location.svg" alt="">
-                        <p>Sukabirus, Bandung</p>
+                        <p><?= $kota_toko ?></p>
                     </div>
                 </div>
             </div>
@@ -200,12 +202,12 @@
                 <h2>Jumlah Produk</h2>
                 <div class="form-group">
                     <label>Jumlah Barang</label> <br>
-                    <input type="number" id="quantity" name="quantity" min="1" max="5">
-                    <span><?= rupiah($harga);?></span>
+                    <input type="number" id="quantity" name="quantity" min="1" value="1"
+                    oninput="multipleBy(this.value)" onkeypress="return onlyNumberKey(event)">
                 </div>
                 <div class="subtotal">
                     <label>Subtotal</label> <br>
-                    <button>Rp 50.000</button>
+                    <button><?= rupiah($harga);?></button>
                 </div>
                 <div class="button">
                     <a href="#form-pembelian"><button class="beli" data-mdb-toggle="modal" data-mdb-target="#formModal">Beli Sekarang</button> </a>
@@ -271,7 +273,7 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-end mb-2">
-                            <p>Total Harga: <b id="result"><?= rupiah($harga);?></b></p>
+                            <p>Total Harga: <b id="price-total"><?= rupiah($harga);?></b></p>
                             <input type="hidden" name="total-harga" id="total-harga" value="<?= $harga ?>">
                         </div> 
                         <div class="form-outline">
@@ -342,7 +344,7 @@
 
         function multipleBy(val) {
             let totalHarga = (<?= $harga ?> * val);
-            document.getElementById("result").innerHTML = formatRupiah(totalHarga.toString(),"Rp ");
+            document.getElementById("price-total").innerHTML = formatRupiah(totalHarga.toString(),"Rp ");
             document.getElementById("total-harga").value = totalHarga;
         }
     </script>

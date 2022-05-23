@@ -1,29 +1,29 @@
 /*===== MODAL =====*/ 
-const open_masuk = document.getElementById('open-masuk')
-const close_masuk = document.getElementById('close-masuk')
-const modal_masuk = document.getElementById('modal-masuk')
+// const open_masuk = document.getElementById('open-masuk')
+// const close_masuk = document.getElementById('close-masuk')
+// const modal_masuk = document.getElementById('modal-masuk')
 
-const open_daftar = document.getElementById('open-daftar')
-const close_daftar = document.getElementById('close-daftar')
-const modal_daftar = document.getElementById('modal-daftar')
+// const open_daftar = document.getElementById('open-daftar')
+// const close_daftar = document.getElementById('close-daftar')
+// const modal_daftar = document.getElementById('modal-daftar')
 
-if(!!open_masuk){
-    open_masuk.addEventListener('click', () => {
-        modal_masuk.classList.add('show-modal')
-    });
+// if(!!open_masuk){
+//     open_masuk.addEventListener('click', () => {
+//         modal_masuk.classList.add('show-modal')
+//     });
     
-    close_masuk.addEventListener('click', () => {
-        modal_masuk.classList.remove('show-modal')
-    });
+//     close_masuk.addEventListener('click', () => {
+//         modal_masuk.classList.remove('show-modal')
+//     });
     
-    open_daftar.addEventListener('click', () => {
-        modal_daftar.classList.add('show-modal')
-    });
+//     open_daftar.addEventListener('click', () => {
+//         modal_daftar.classList.add('show-modal')
+//     });
     
-    close_daftar.addEventListener('click', () => {
-        modal_daftar.classList.remove('show-modal')
-    });
-}
+//     close_daftar.addEventListener('click', () => {
+//         modal_daftar.classList.remove('show-modal')
+//     });
+// }
 
 /*===== SHOW MOBILE MENU =====*/ 
 const hamburger = document.querySelector('.hamburger');
@@ -132,9 +132,10 @@ function onlyNumberKey(evt) {
 
 var swiper = new Swiper(".mySwiper", {
     slidesPerView: 4,
-    spaceBetween: 20,
+    spaceBetween: 30,
     maxSlidesPerGroup: 4,
     loop: false,
+    loopFillGroupWithBlank: true,
     pagination: {
       el: ".swiper-pagination",
       clickable: true,

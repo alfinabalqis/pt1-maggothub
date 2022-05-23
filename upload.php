@@ -35,8 +35,13 @@ if(isset($_POST["upload"])) {
     <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <!--MDB CSS-->
+    <!-- <link rel="stylesheet" href="assets/css/mdb/mdb.min.css?v=<?= time(); ?>"> -->
     <!-- Main -->
     <link rel="stylesheet" href="./assets/css/style.css?v=<?= time(); ?>">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+
 </head>
 <body>
 <header>
@@ -47,15 +52,15 @@ if(isset($_POST["upload"])) {
             </div>
 			<div class="nav__menu" id="nav-menu">
 				<ul class="nav__list">
-					<a href="index.php" class="nav__link"><li class="nav__item"><strong>Beranda</strong></li></a>
-					<a href="produk.php" class="nav__link active"><li class="nav__item"><strong>Produk</strong></li></a>
+					<a href="index.php" class="nav_link"><li class="nav__item"><strong>Beranda</strong></li></a>
+					<a href="produk.php" class="nav_link"><li class="nav__item"><strong>Produk</strong></li></a>
                     <?php if(!$is_penjual): ?>
-					    <a href="index.php#tentang-bsf" class="nav__link"><li class="nav__item"><strong>Tentang BSF</strong></li></a>
+					    <a href="index.php#tentang-bsf" class="nav_link"><li class="nav_item"><strong>Tentang BSF</strong></li></a>
                     <?php endif; ?>
 				</ul>
 			</div>
             <?php if(isset($_SESSION["login"])): ?>
-                <div class="nav__menu" id="nav-menu">
+            <div class="nav__menu" id="nav-menu">
 				<ul class="nav__list" style="display: flex;">
                     <?php if($is_penjual): ?>
                         <div class="notif-dropdown">
@@ -65,15 +70,15 @@ if(isset($_POST["upload"])) {
                             <div class="dropdown-content">
                             <?php if(empty($notifs)): ?>
                                     <h4>Tidak ada notifikasi masuk</h4>
-                                    <img src="assets/images/notfound.svg" alt="Not Found" class="no-notif">
+                                    <img src="assets/images/not-found.svg" alt="Not Found" class="no-notif">
                                 <?php endif; ?>
 
                                 <?php if(!empty($notifs)): ?>
                                 <h1>Order Masuk</h1>
                                 <?php endif; ?>
                                 
-                                <?php foreach ($notifs as $notif): ?>
                                 <div class="dropdown-list">
+                                <?php foreach ($notifs as $notif): ?>
                                     <div class="d-inline-flex detail">
                                         <img src="assets/images/produk/<?= $notif["gambar"]; ?>" alt="">
                                         <div class="notif">
@@ -84,8 +89,8 @@ if(isset($_POST["upload"])) {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 <?php endforeach; ?>
+                                </div>
                             </div>
                         </div>
                         <a class="nav_link" href="upload.php">
@@ -137,26 +142,26 @@ if(isset($_POST["upload"])) {
             <div class="nav__dropdown">
                 <a href="#">
                     <strong>Masuk</strong>
-                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                    <i class='bx bx-chevron-down nav_icon nav_dropdown-icon'></i>
                 </a>
     
                 <div class="nav__dropdown-collapse">
                     <div class="nav__dropdown-content">
-                        <a href="login-penjual.php" class="nav__dropdown-item nav__link">Sebagai Penjual</a>
-                        <a href="login-pembeli.php" class="nav__dropdown-item nav__link">Sebagai Pembeli</a>
+                        <a href="login-penjual.php" class="nav_dropdown-item nav_link">Sebagai Penjual</a>
+                        <a href="login-pembeli.php" class="nav_dropdown-item nav_link">Sebagai Pembeli</a>
                     </div>
                 </div>
             </div>
             <div class="nav__dropdown">
                 <a href="#">
                     <strong>Daftar</strong>
-                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                    <i class='bx bx-chevron-down nav_icon nav_dropdown-icon'></i>
                 </a>
     
                 <div class="nav__dropdown-collapse">
                     <div class="nav__dropdown-content">
-                        <a href="register-penjual.php" class="nav__dropdown-item nav__link">Sebagai Penjual</a>
-                        <a href="register-pembeli.php" class="nav__dropdown-item nav__link">Sebagai Pembeli</a>
+                        <a href="register-penjual.php" class="nav_dropdown-item nav_link">Sebagai Penjual</a>
+                        <a href="register-pembeli.php" class="nav_dropdown-item nav_link">Sebagai Pembeli</a>
                     </div>
                 </div>
             </div>
@@ -197,10 +202,22 @@ if(isset($_POST["upload"])) {
                     </div>
                     <button type="submit" name="upload">Upload Produk</button>
                 </div>
-                <div class="upload-gambar">
-                    <label for="image-file">Upload Gambar</label>
-                    <div class="form-group file-area">
-                        <input type="file" name="image-file" id="image-file" required multiple="multiple"/>
+                <div class="upload-gambar mt-5">
+                    <div class="drop-container">
+                        <div class="drop">
+                            <i class="fa-solid fa-photo-film icon"></i>
+                            <span class="text">
+                            Drag and drop your documents, photos, and video here.
+                            </span>
+                            <div class="or-con">
+                            <span class="line"></span>
+                            <span class="or">OR</span>
+                            <span class="line"></span>
+                            </div>
+                            <label for="file-upload">Browse Files</label>
+                            <input type="file" id="file-upload" class="file-input" multiple onchange="processSelectedFiles(this)" />
+                        </div>
+                        <div class="progress"></div>
                     </div>
                 </div>
             </form>
@@ -250,7 +267,62 @@ if(isset($_POST["upload"])) {
 
     <!--===== MAIN JS =====-->
     <script src="assets/script/main.js?v=<?= time(); ?>"></script>
-    
+    <script>
+        const drop = document.querySelector(".drop");
+        const input = document.querySelector(".drop input");
+        const text = document.querySelector(".text");
+        const progress = document.querySelector(".progress");
+
+        let files = [];
+
+        input.addEventListener("change", () => {
+        drop.style.display = "none";
+        upload();
+        });
+
+        drop.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        text.innerHTML = "Release your mouse to drop.";
+        drop.classList.add("upload-active");
+        });
+
+        drop.addEventListener("dragleave", (e) => {
+        e.preventDefault();
+        text.innerHTML = "Drag and drop your documents, photos, and video here.";
+        drop.classList.remove("upload-active");
+        });
+
+        drop.addEventListener("drop", (e) => {
+        e.preventDefault();
+        files = e.dataTransfer.files;
+        drop.style.display = "none";
+        upload();
+
+        });
+
+        // Upload Logic
+        function upload() {
+            // fake Upload Logic
+            let intervalCount = 0.25;
+            progress.style.display = "block";
+            progress.style.width = `${20 * intervalCount}%`;
+            const interval = setInterval(() => {
+                intervalCount += 0.25;
+                progress.style.width = `${20 * intervalCount}%`;
+                if (intervalCount == 5) {
+                clearInterval(interval);
+                }
+            }, 100);
+        }
+
+        function processSelectedFiles(fileInput) {
+            var files = fileInput.files;
+
+            for (var i = 0; i < files.length; i++) {
+                alert("Filename " + files[i].name);
+            }
+        } 
+    </script>
 
 </body>
 </html>
