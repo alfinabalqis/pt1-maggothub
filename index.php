@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <!--MDB CSS-->
-    <link rel="stylesheet" href="assets/css/mdb/mdb.min.css?v=<?= time(); ?>">
+    <link rel="stylesheet" href="./assets/css/mdb/mdb.min.css?v=<?= time(); ?>">
     <!--Main CSS-->
     <link rel="stylesheet" href="./assets/css/style.css?v=<?= time(); ?>">
     <!-- Link Swiper's CSS -->
@@ -64,7 +64,7 @@
                                 
                                 <div class="dropdown-list">
                                 <?php foreach ($notifs as $notif): ?>
-                                    <div class="d-inline-flex detail" data-mdb-toggle="modal" data-mdb-target="#notifDetail">
+                                    <div class="d-inline-flex detail">
                                         <img src="assets/images/produk/<?= $notif["gambar"]; ?>" alt="">
                                         <div class="notif">
                                             <h2 class="no-wrap"><?= $notif["nama"]; ?></h2>
@@ -177,8 +177,8 @@
         </div>
     </div> -->
     <!-- Masuk Modal -->
-    <div class="modal fade" id="masukModal" tabindex="-1" aria-labelledby="masukModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-container">
+    <div class="modal fade mt-5" id="masukModal" tabindex="-1" aria-labelledby="masukModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-container" >
             <div class="modal-content text-center">
                 <div class="d-inline-flex justify-content-end me-3">
                     <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
@@ -204,7 +204,7 @@
         </div>
     </div>
     <!-- Daftar Modal -->
-    <div class="modal fade" id="daftarModal" tabindex="-1" aria-labelledby="daftarModalLabel" aria-hidden="true">
+    <div class="modal fade mt-5" id="daftarModal" tabindex="-1" aria-labelledby="daftarModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-container">
             <div class="modal-content text-center">
                 <div class="d-inline-flex justify-content-end me-3">
@@ -345,9 +345,9 @@
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
      <!--===== MDB JS =====-->
-     <script type="text/javascript" src="assets/script/mdb.min.js?v=<?= time(); ?>"></script>
+     <script type="text/javascript" src="./assets/script/mdb.min.js?v=<?= time(); ?>"></script>
     <!--===== MAIN JS =====-->
-    <script src="assets/script/main.js?v=<?= time(); ?>"></script>
+    <script src="./assets/script/main.js?v=<?= time(); ?>"></script>
 
 </body>
 </html>

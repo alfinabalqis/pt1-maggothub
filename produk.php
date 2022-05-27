@@ -279,7 +279,11 @@
                     <p><strong>Harga</strong></p>
                     <div class="price"><?= rupiah($product["harga"]); ?></div>
                     <div class="btn-lihat-produk">
+                        <?php if ($is_penjual): ?>
+                        <a href="edit-produk.php?id-produk=<?= $product["id"]; ?>">Edit Produk</a>
+                        <?php else: ?>
                         <a href="detail-produk.php?id-produk=<?= $product["id"]; ?>">Lihat Produk</a>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <?php endforeach; ?>

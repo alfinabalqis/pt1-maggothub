@@ -133,11 +133,39 @@ function tambah($data) {
     
     return mysqli_affected_rows($koneksi);
 }
+function update($data) {
+    global $koneksi;
+    $id_product = $data["id-product"];
+    $nama_produk = htmlspecialchars($data["nama-produk"]);
+    $harga = htmlspecialchars($data["harga"]);
+    $stok = htmlspecialchars($data["stok"]);
+    $deskripsi = htmlspecialchars($data["deskripsi"]);
+
+    //upload gambar
+    $image_file = upload_file();
+    if(!$image_file) return false;
+
+    mysqli_query($koneksi, "UPDATE products
+                SET nama = '$nama_produk', harga = '$harga',
+                stok = $stok, deskripsi = '$deskripsi',
+                gambar = '$image_file' WHERE id = $id_product");
+    
+    return mysqli_affected_rows($koneksi);
+}
 
 function upload_file() {
     $nama_file = $_FILES['image-file']['name'];
     $ukuran_file = $_FILES['image-file']['size'];
     $tmp_name = $_FILES['image-file']['tmp_name'];
+    $error = $_FILES['image-file']['error'];
+
+    // Cek apakah file sudah diupload
+    if($error === 4 ) {
+        echo "<script>
+              alert('Pilih gambar produk terlebih dahulu');
+          </script>";
+        return false;
+    }
 
     // Cek ekstensi file
     $ekstensiValid = ['jpg', 'jpeg', 'png'];
