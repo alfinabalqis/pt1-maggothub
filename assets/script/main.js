@@ -52,7 +52,7 @@ function scrollActive(){
 }
 
 /*===== SCROLL REVEAL ANIMATION =====*/
-if(typeof sr !== 'undefined'){
+if(typeof ScrollReveal !== 'undefined'){
     const sr = ScrollReveal({
         origin: 'top',
         distance: '80px',
@@ -93,20 +93,22 @@ function hide(){
     hide.style.display = "none";
 }
 
-if(typeof swiper !== 'undefined'){
-    var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 4,
-        spaceBetween: 30,
-        maxSlidesPerGroup: 4,
-        loop: false,
-        loopFillGroupWithBlank: true,
-        pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-        },
-        navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-        },
-    });
+if(typeof Swiper !== 'undefined'){
+
+var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 4,
+    spaceBetween: 30,
+    maxSlidesPerGroup: 4,
+    loop: false,
+    loopFillGroupWithBlank: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+});
+
 }
